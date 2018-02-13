@@ -1,0 +1,37 @@
+<QuestionSet>
+	<Categories>
+		<CategoryDefinition id="0">Debug Category 0</CategoryDefinition>
+		<CategoryDefinition id="1">Debug Category 1</CategoryDefinition>
+		<CategoryDefinition id="2">Debug Category 2</CategoryDefinition>
+		<CategoryDefinition id="3">Debug Category 3</CategoryDefinition>
+	</Categories>
+	<Questions>
+		<Question>
+			<Category>0</Category>
+			<Category>1</Category>			
+			<Body>Debug Question 0</Body>
+			<Answer>0: Incorrect</Answer>
+			<Answer correct="">1: Correct</Answer>
+			<Answer>2: Incorrect</Answer>
+			<Answer>3: Incorrect</Answer>
+		</Question> 
+		<Question>
+			<Category>0</Category>
+			<Category>2</Category>			
+			<Body>Debug Question 1</Body>
+			<Answer>0: Incorrect</Answer>
+			<Answer correct="">1: Correct</Answer>
+			<Answer>2: Incorrect</Answer>
+			<Answer>3: Incorrect</Answer>
+		</Question> 
+		<Question>
+			<Category>0</Category>
+			<Category>3</Category>			
+			<Body>Debug Question 2</Body>
+			<Answer>0: Incorrect</Answer>
+			<Answer correct="">1: Correct</Answer>
+			<Answer>2: Incorrect</Answer>
+			<Answer>3: Incorrect</Answer>
+		</Question> 
+	</Questions>
+</QuestionSet>

@@ -1,19 +1,21 @@
 <QuestionSet>
+	<Name>Debug Questions</Name>
+	<Version>0.0.1</Version>
+	<Author>InHysteria</Author>
 	<Categories>
-		<CategoryDefinition id="0">Debug Category 0</CategoryDefinition>
+		<CategoryDefinition id="0">Computing</CategoryDefinition>
 		<CategoryDefinition id="1">Debug Category 1</CategoryDefinition>
 		<CategoryDefinition id="2">Debug Category 2</CategoryDefinition>
 		<CategoryDefinition id="3">Debug Category 3</CategoryDefinition>
 	</Categories>
 	<Questions>
 		<Question>
-			<Category>0</Category>
-			<Category>1</Category>			
-			<Body>Debug Question 0</Body>
-			<Answer>0: Incorrect</Answer>
-			<Answer correct="">1: Correct</Answer>
-			<Answer>2: Incorrect</Answer>
-			<Answer>3: Incorrect</Answer>
+			<Category>0</Category>		
+			<Body>As described in RFC 1149, what do the initials 'IPoAC' refer to?</Body>
+			<Answer>Internet Protocol, opens Available Content</Answer>
+			<Answer correct="">Internet Protocol over Avian Carriers</Answer>
+			<Answer>Internet Protocol, open Archive Containment </Answer>
+			<Answer>Internet Protocol over Air Conditioning</Answer>
 		</Question> 
 		<Question>
 			<Category>0</Category>

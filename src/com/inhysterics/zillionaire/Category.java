@@ -12,10 +12,7 @@ public class Category {
 	public Category(int id, String name) {
 		this.id = id;
 		this.name = name;
-	}
-
-	
-	
+	}	
 	
 	public int getId() {
 		return id;
@@ -24,6 +21,14 @@ public class Category {
 	public String getName() {
 		return name;
 	}
+
+	
+
+	@Override
+	public String toString() {
+		return getName(); 
+	}
+
 
 
 	//Still working out quite how I want these classes to be created, but in the interests of speed I'm going to do this..

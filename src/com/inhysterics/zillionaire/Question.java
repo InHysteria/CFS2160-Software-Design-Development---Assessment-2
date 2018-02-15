@@ -113,17 +113,8 @@ public class Question {
 			}
 			
 			//Body
-			for (i = 0; i < bodyList.getLength(); i++)
-			{
-				try 
-				{
-					question.body =  bodyList.item(i).getTextContent();
-				}
-				catch (Exception e)
-				{
-					errors.add(e);
-				}
-			}
+			if (bodyList.getLength() == 0) question.body = "!!NO QUESTION BODY!!";
+			else question.body = bodyList.item(0).getTextContent();
 						
 			return question;				
 		}

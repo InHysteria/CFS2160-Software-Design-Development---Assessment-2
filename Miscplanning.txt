@@ -1,0 +1,9 @@
+TODO: ConfigInterface
+	V
+FIRST_PASS: PlayerInterface <-------+
+	V								|
+FIRST_PASS: CategoryInterface		|
+	V								|
+FIRST_PASS: QuestionInterface ------+
+	V
+TODO: FinalScoreInterface

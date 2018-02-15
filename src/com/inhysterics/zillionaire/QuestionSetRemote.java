@@ -44,7 +44,7 @@ public class QuestionSetRemote
 	public void download()
 	{
 		if (name != null)
-			QuestionSetService.pullFromGit("questionsets/"+remote+".questionset", remote+"_remote.questionset");
+			QuestionSetService.pullFromGit("questionsets/"+remote, remote);
 	}
 	
 	@Override

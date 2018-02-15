@@ -56,8 +56,8 @@ public class Zillionaire {
 		GameState debugGame = new GameState(debugSet, debugPlayers);
 
 
-		//QuestionSetInterface questionSetInterface = new QuestionSetInterface();
-		//questionSetInterface.setVisible(true);
+		QuestionSetInterface questionSetInterface = new QuestionSetInterface();
+		questionSetInterface.setVisible(true);
 		
 		/*
 		PlayerInterface playerInterface = new PlayerInterface();

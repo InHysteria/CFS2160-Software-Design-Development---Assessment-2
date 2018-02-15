@@ -17,7 +17,7 @@ public class Zillionaire {
 	//TODO: Take alllllllll these hardcoded strings and put em in a strings resource etc;
 	public static void main(String args[])
 	{
-		if (args.length > 0 && args[0].toString() == "1")
+		if (args.length > 0 && args[0].toString().equals("/generatemanifest"))
 		{
 			System.out.println("Creating manifest for files in " + Paths.get(QuestionSetService.QUESTION_SET_LOCAL_PATH).toAbsolutePath().toString());
 			QuestionSetService.generateLocalQuestionManifest();
@@ -51,13 +51,13 @@ public class Zillionaire {
 		debugPlayers[3].setQuestionNo(11);
 		
 		ArrayList<Exception> errors = new ArrayList<Exception>();
-		QuestionSet debugSet = QuestionSet.Builder.CreateQuestionSet("./questionsets/sample.questionset", errors);
+		QuestionSet debugSet = QuestionSet.Builder.CreateQuestionSet("./questionsets/debug.questionset", errors);
 		
 		GameState debugGame = new GameState(debugSet, debugPlayers);
 
 
-		QuestionSetInterface questionSetInterface = new QuestionSetInterface();
-		questionSetInterface.setVisible(true);
+		//QuestionSetInterface questionSetInterface = new QuestionSetInterface();
+		//questionSetInterface.setVisible(true);
 		
 		/*
 		PlayerInterface playerInterface = new PlayerInterface();

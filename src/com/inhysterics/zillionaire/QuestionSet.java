@@ -18,6 +18,7 @@ public class QuestionSet {
 	protected String name;
 	protected String version;
 	protected String author;
+	protected String filename;
 	
 	protected HashMap<Integer, Category> categories;
 	protected Question[] questions;
@@ -60,7 +61,7 @@ public class QuestionSet {
 				Document dom = builder.parse(filepath);
 				Element rootElement = dom.getDocumentElement();
 
-				NodeList nameList = rootElement.getElementsByTagName("Name");; //TODO: Demagicify these strings
+				NodeList nameList = rootElement.getElementsByTagName("Name"); //TODO: Demagicify these strings
 				NodeList versionList = rootElement.getElementsByTagName("Version");
 				NodeList authorList = rootElement.getElementsByTagName("Author");
 				NodeList categoryList = rootElement.getElementsByTagName("Categories");
@@ -120,6 +121,8 @@ public class QuestionSet {
 						errors.add(e);
 					}
 				}
+				
+				questionset.filename = Paths.get(filepath).getFileName().toString();
 							
 				return questionset;	
 			}

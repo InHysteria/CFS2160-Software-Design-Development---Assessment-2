@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<QuestionSetManifest>
+<QuestionSetRemote>
+<Name>Debug Questions</Name>
+<Version>0.0.1</Version>
+<Author>InHysteria</Author>
+<Questions>3</Questions>
+<Remote>debug.questionset</Remote>
+</QuestionSetRemote>
+</QuestionSetManifest>

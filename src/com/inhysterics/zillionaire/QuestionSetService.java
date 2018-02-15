@@ -8,12 +8,15 @@ import java.io.FilenameFilter;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
@@ -22,9 +25,13 @@ import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
 
 public class QuestionSetService 
 {
+	private static final String QUESTION_SET_MANFIFEST = "question_manifest.xml";
 	public static final String QUESTION_SET_LOCAL_PATH = "./questionsets/";
 	public static final String QUESTION_SET_ONLINE_PATH = "https://raw.githubusercontent.com/InHysteria/CFS2160-Software-Design-Development---Assessment-2/master/";
 	
@@ -52,11 +59,47 @@ public class QuestionSetService
 		return sets;
 	}
 	public static QuestionSetRemote[] getRemoteQuestionSets()
-	{
-		return new QuestionSetRemote[] 
+	{		
+		try 
+		{		
+			int i;
+			String manifestSource = pullFromGit(QUESTION_SET_MANFIFEST);
+			
+			InputSource is = new InputSource();
+			is.setCharacterStream(new StringReader(manifestSource));
+			
+			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();	
+			DocumentBuilder builder = factory.newDocumentBuilder();
+			Document dom = builder.parse(is);
+			Element rootElement = dom.getDocumentElement();
+			
+			NodeList remoteQuestionsList = rootElement.getElementsByTagName("QuestionSetRemote"); //TODO: Demagicify these strings
+			QuestionSetRemote[] remoteQuestions = new QuestionSetRemote[remoteQuestionsList.getLength()];
+			for (i = 0; i < remoteQuestionsList.getLength(); i++)
+			{
+				Element remoteQuestion = (Element)remoteQuestionsList.item(i).getChildNodes();
+				NodeList nameList = remoteQuestion.getElementsByTagName("Name");
+				NodeList versionList = remoteQuestion.getElementsByTagName("Version");
+				NodeList authorList = remoteQuestion.getElementsByTagName("Author");
+				NodeList questionsList = remoteQuestion.getElementsByTagName("Questions");
+				NodeList remoteList = remoteQuestion.getElementsByTagName("Remote");
+				
+				remoteQuestions[i] = new QuestionSetRemote(
+						nameList.getLength() == 0 ? "$MISSING$" : nameList.item(0).getTextContent(),
+						versionList.getLength() == 0 ? "$MISSING$" : versionList.item(0).getTextContent(),
+						authorList.getLength() == 0 ? "$MISSING$" : authorList.item(0).getTextContent(),
+						Integer.parseInt(questionsList.getLength() == 0 ? "0" : questionsList.item(0).getTextContent()),
+						remoteList.getLength() == 0 ? "$MISSING$" : remoteList.item(0).getTextContent()
+				);						
+			}
+			
+			return remoteQuestions;
+		} 
+		catch (Exception e) 
 		{
-			new QuestionSetRemote("DEBUG Question Set", "0.0.1", "InHysteria", 3, "debug")
-		};
+			e.printStackTrace();
+			return new QuestionSetRemote[0];
+		}
 	}
 	
 	
@@ -124,6 +167,10 @@ public class QuestionSetService
 	
 	public static void generateLocalQuestionManifest()
 	{
+		File outputFile = new File("./" + QUESTION_SET_MANFIFEST);
+		if (outputFile.exists())
+			outputFile.delete();
+
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		try 
 		{
@@ -139,16 +186,19 @@ public class QuestionSetService
 				Element setVersionElement = dom.createElement("Version");
 				Element setAuthorElement = dom.createElement("Author");
 				Element setQuestionsElement = dom.createElement("Questions");
+				Element setRemoteElement = dom.createElement("Remote");
 
 				setNameElement.setTextContent(set.name);
-				setNameElement.setTextContent(set.version);
-				setNameElement.setTextContent(set.author);
-				setNameElement.setTextContent(Integer.toString(set.questions.length));
+				setVersionElement.setTextContent(set.version);
+				setAuthorElement.setTextContent(set.author);
+				setQuestionsElement.setTextContent(Integer.toString(set.questions.length));
+				setRemoteElement.setTextContent(set.filename);
 
 				setRootElement.appendChild(setNameElement);
 				setRootElement.appendChild(setVersionElement);
 				setRootElement.appendChild(setAuthorElement);
-				setRootElement.appendChild(setQuestionsElement);		
+				setRootElement.appendChild(setQuestionsElement);
+				setRootElement.appendChild(setRemoteElement);		
 				rootElement.appendChild(setRootElement);
 			}			
 			
@@ -156,7 +206,7 @@ public class QuestionSetService
             Transformer transformer = transformerFactory.newTransformer();
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             DOMSource source = new DOMSource(dom);
-            StreamResult file = new StreamResult(new File("./question_manifest.xml"));
+            StreamResult file = new StreamResult(outputFile);
             transformer.transform(source, file);
             System.out.println("DONE");
 			

@@ -13,7 +13,19 @@ public class PlayerState implements Comparable<PlayerState>
 	
 	public PlayerState() 
 	{
-
+		hasFiftyFifty = true;
+		hasAskAudiance = true;
+		hasFinished = false;
+		
+		questionNo = 0;
+	}
+	
+	@Override
+	public String toString()
+	{
+		return String.format("<html>%s<br/>&nbsp;&nbsp;&nbsp;&nbsp;Winnings: £%s</html>",
+				getName(),
+				getScore());
 	}
 
 	

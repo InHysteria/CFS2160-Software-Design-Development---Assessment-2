@@ -16,49 +16,53 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 
 import com.inhysterics.zillionaire.GameState;
 import com.inhysterics.zillionaire.PlayerState;
 
-public class PlayerInterface extends JFrame {
+public class PlayerInterface extends JPanel {
 
 	protected JLabel captionLabel;
 	protected JLabel instructionLabel;
-	protected DefaultListModel<String> categoryListModel;
-	protected JList<String> categoryList;
-	protected JScrollPane categoryListScroller;
+	protected DefaultListModel<PlayerState> playerListModel;
+	protected JList<PlayerState> playerList;
+	protected JScrollPane playerListScroller;
 	protected JButton selectButton;
 	
 	protected GameState game;
 	
-	protected ActionListener continueListener;
+	protected ActionListener selectionHandler;
 	
 	public PlayerInterface()
 	{
-		InitializeComponent();
-		
-		this.setSize(720, 480);		
+		InitializeComponent();	
+	}
+	public PlayerInterface(GameState game)
+	{
+		this();
+		setGame(game);
 	}
 	
+	@SuppressWarnings("serial")
 	protected void InitializeComponent()
 	{
-		Container container = this.getContentPane();
-		container.setLayout(new GridBagLayout());
+		this.setLayout(new GridBagLayout());
 		
 		captionLabel = new JLabel("Current scores are..", JLabel.CENTER);	
 		instructionLabel = new JLabel("The next player in the rotation is %s", JLabel.CENTER);
 
-		categoryListModel = new DefaultListModel<String>();
-		categoryList = new JList<String>(categoryListModel);
-		categoryList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		categoryList.setLayoutOrientation(JList.VERTICAL);
+		playerListModel = new DefaultListModel<PlayerState>();
+		playerList = new JList<PlayerState>(playerListModel);
+		playerList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		playerList.setLayoutOrientation(JList.VERTICAL);
 
-		DefaultListCellRenderer renderer = (DefaultListCellRenderer)categoryList.getCellRenderer();
+		DefaultListCellRenderer renderer = (DefaultListCellRenderer)playerList.getCellRenderer();
 		renderer.setHorizontalAlignment(JLabel.CENTER);
 		
-		categoryList.setSelectionModel(new DefaultListSelectionModel()
+		playerList.setSelectionModel(new DefaultListSelectionModel()
 		{
 		    @Override
 		    public void setSelectionInterval(int index0, int index1) {
@@ -66,9 +70,9 @@ public class PlayerInterface extends JFrame {
 		    }
 		});
 		
-		categoryListScroller = new JScrollPane(categoryList);
-		categoryListScroller.setAlignmentX(JScrollPane.LEFT_ALIGNMENT);
-		categoryListScroller.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		playerListScroller = new JScrollPane(playerList);
+		playerListScroller.setAlignmentX(JScrollPane.LEFT_ALIGNMENT);
+		playerListScroller.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		
 		selectButton = new JButton("%s is ready");
 		
@@ -81,7 +85,7 @@ public class PlayerInterface extends JFrame {
 		c.weighty = 0;
 		c.insets = new Insets(20,20,0,20);
 		c.anchor = GridBagConstraints.NORTH;
-		container.add(captionLabel, c);		
+		this.add(captionLabel, c);		
 		yRow++;
 		
 		c.gridy = yRow;
@@ -90,7 +94,7 @@ public class PlayerInterface extends JFrame {
 		c.insets = new Insets(0,20,0,20);
 		c.anchor = GridBagConstraints.CENTER;
 		c.fill = GridBagConstraints.BOTH;
-		container.add(categoryListScroller, c);
+		this.add(playerListScroller, c);
 		yRow++;		
 
 		c.gridy = yRow;
@@ -98,7 +102,7 @@ public class PlayerInterface extends JFrame {
 		c.weighty = 0;
 		c.insets = new Insets(20,20,0,20);
 		c.anchor = GridBagConstraints.NORTH;
-		container.add(instructionLabel, c);		
+		this.add(instructionLabel, c);		
 		yRow++;
 
 		c.gridy = yRow;
@@ -106,7 +110,7 @@ public class PlayerInterface extends JFrame {
 		c.weighty = 0;
 		c.insets = new Insets(0,20,40,20);
 		c.anchor = GridBagConstraints.NORTH;
-		container.add(selectButton, c);		
+		this.add(selectButton, c);		
 		yRow++;
 	}
 	
@@ -117,21 +121,22 @@ public class PlayerInterface extends JFrame {
 		PlayerState nextPlayer = game.getCurrentPlayer();
 		instructionLabel.setText(String.format("The next player in the rotation is %s", nextPlayer.getName()));
 		selectButton.setText(String.format("%s is ready", nextPlayer.getName()));
+		playerListModel.clear();		
 		
 		PlayerState[] players = game.getPlayers();
 		Arrays.sort(players, Collections.reverseOrder());
 		for (PlayerState player : players)
-			categoryListModel.addElement(player.getName() + " - £" + player.getScore());
+			playerListModel.addElement(player);
 		
 	}
 	
-	public void setContinueListener(ActionListener continueListener)
+	public void setSelectionHandler(ActionListener selectionHandler)
 	{
-		selectButton.removeActionListener(continueListener);
+		selectButton.removeActionListener(selectionHandler);
 		
-		this.continueListener = continueListener;
+		this.selectionHandler = selectionHandler;
 		
-		selectButton.addActionListener(continueListener);
+		selectButton.addActionListener(selectionHandler);
 	}
 }
 

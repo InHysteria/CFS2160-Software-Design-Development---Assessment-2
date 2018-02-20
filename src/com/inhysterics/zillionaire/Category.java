@@ -29,6 +29,19 @@ public class Category {
 		return getName(); 
 	}
 
+	@Override
+	public boolean equals(Object obj)
+	{
+		if (!(obj instanceof Category))
+			return false;
+		return this.getName().equals(((Category)obj).getName());
+	}
+	
+	@Override
+	public int hashCode()
+	{
+		return getName().hashCode();
+	}
 
 
 	//Still working out quite how I want these classes to be created, but in the interests of speed I'm going to do this..

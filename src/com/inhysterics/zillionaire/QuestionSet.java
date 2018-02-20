@@ -30,8 +30,44 @@ public class QuestionSet {
 	@Override
 	public String toString()
 	{
-		return String.format("<html>%s v%s<br/>&nbsp;&nbsp;&nbsp;&nbsp;contains %s questions<br/>&nbsp;&nbsp;&nbsp;&nbsp;by %s</html>", name, version, questions.length, author);  
+		return String.format("<html>%s v%s<br/>&nbsp;&nbsp;&nbsp;&nbsp;contains %s questions<br/>&nbsp;&nbsp;&nbsp;&nbsp;by %s</html>", 
+				name, 
+				version, 
+				questions.length, 
+				author);  
 	}
+	
+
+	public String getName() 
+	{
+		return name;
+	}
+
+	public String getVersion() 
+	{
+		return version;
+	}
+
+	public String getAuthor() 
+	{
+		return author;
+	}
+
+	public String getFilename() 
+	{
+		return filename;
+	}
+
+	public HashMap<Integer, Category> getCategories() 
+	{
+		return categories;
+	}
+
+	public Question[] getQuestions() {
+		return questions;
+	}
+
+
 
 	//Still working out quite how I want these classes to be created, but in the interests of speed I'm going to do this..
 	//Probably isn't correct but I've seen java classes doing this before.

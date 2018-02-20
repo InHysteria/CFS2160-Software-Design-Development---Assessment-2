@@ -15,6 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 
@@ -22,8 +23,9 @@ import com.inhysterics.zillionaire.Category;
 import com.inhysterics.zillionaire.QuestionSet;
 import com.inhysterics.zillionaire.QuestionSetRemote;
 import com.inhysterics.zillionaire.QuestionSetService;
+import com.inhysterics.zillionaire.SelectionHandler;
 
-public class QuestionSetInterface extends JFrame
+public class QuestionSetInterface extends JPanel
 {
 	protected JLabel localLabel;
 	protected JButton localButton;
@@ -38,22 +40,20 @@ public class QuestionSetInterface extends JFrame
 	protected JScrollPane remoteQuestionSetScroller;
 	protected JButton selectButton;
 	
+	protected SelectionHandler<QuestionSet[]> selectionHandler;
+	
 	public QuestionSetInterface()
 	{
 		InitializeComponent();
 		PopulateLists();
-		
-		this.setSize(720, 480);
 	}
 	
 	protected void InitializeComponent()
 	{
-		Container container = this.getContentPane();
-		container.setLayout(new GridBagLayout());
+		this.setLayout(new GridBagLayout());
 	
 
 		localLabel = new JLabel("Avaliable locally", JLabel.LEFT);	
-		localButton = new JButton("Play with selected question sets");	
 		
 		localQuestionSetListModel = new DefaultListModel<QuestionSet>();
 		localQuestionSetList = new JList<QuestionSet>(localQuestionSetListModel);
@@ -64,6 +64,32 @@ public class QuestionSetInterface extends JFrame
 		localQuestionSetScroller = new JScrollPane(localQuestionSetList);
 		localQuestionSetScroller.setAlignmentX(JScrollPane.LEFT_ALIGNMENT);
 		localQuestionSetScroller.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+
+		localButton = new JButton("Play with selected question sets");	
+		localButton.addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent arg0) 
+			{				
+				QuestionSet[] sets = localQuestionSetList.getSelectedValuesList().toArray(new QuestionSet[0]);
+				int question_count = 0;
+				for (QuestionSet set : sets)
+					question_count += set.getQuestions().length;
+						
+				if (JOptionPane.showConfirmDialog(
+						null, 
+						"Play with selected question sets?", 
+						"You have selected " + sets.length + " for a total of " + question_count + " questions.\r\n\r\nDo you want to play with these questions?", 
+						JOptionPane.YES_NO_OPTION, 
+						JOptionPane.QUESTION_MESSAGE)
+						
+						== JOptionPane.NO_OPTION)
+					return;
+				
+				if (selectionHandler != null)	
+					selectionHandler.OnSelectionMade(sets);
+			}			
+		});
 
 		remoteLabel = new JLabel("Avaliable online", JLabel.LEFT);	
 		
@@ -107,7 +133,7 @@ public class QuestionSetInterface extends JFrame
 		c.insets = new Insets(20,20,0,20);
 		c.anchor = GridBagConstraints.NORTH;
 		c.fill = GridBagConstraints.BOTH;
-		container.add(remoteLabel, c);
+		this.add(remoteLabel, c);
 		
 		c.gridx = 1;
 		c.gridy = yRow;
@@ -117,7 +143,7 @@ public class QuestionSetInterface extends JFrame
 		c.insets = new Insets(20,20,0,20);
 		c.anchor = GridBagConstraints.NORTH;
 		c.fill = GridBagConstraints.BOTH;
-		container.add(localLabel, c);
+		this.add(localLabel, c);
 		yRow++;
 		
 		c.gridx = 0;
@@ -128,7 +154,7 @@ public class QuestionSetInterface extends JFrame
 		c.insets = new Insets(0,20,5,20);
 		c.anchor = GridBagConstraints.NORTH;
 		c.fill = GridBagConstraints.BOTH;
-		container.add(remoteQuestionSetScroller, c);
+		this.add(remoteQuestionSetScroller, c);
 
 		c.gridx = 1;
 		c.gridy = yRow;
@@ -138,7 +164,7 @@ public class QuestionSetInterface extends JFrame
 		c.insets = new Insets(0,20,5,20);
 		c.anchor = GridBagConstraints.NORTH;
 		c.fill = GridBagConstraints.BOTH;
-		container.add(localQuestionSetScroller, c);
+		this.add(localQuestionSetScroller, c);
 		yRow++;
 
 		c.gridx = 0;
@@ -149,7 +175,7 @@ public class QuestionSetInterface extends JFrame
 		c.insets = new Insets(5,20,20,20);
 		c.anchor = GridBagConstraints.NORTH;
 		c.fill = GridBagConstraints.BOTH;
-		container.add(remoteButton, c);
+		this.add(remoteButton, c);
 		
 		c.gridx = 1;
 		c.gridy = yRow;
@@ -159,7 +185,7 @@ public class QuestionSetInterface extends JFrame
 		c.insets = new Insets(5,20,20,20);
 		c.anchor = GridBagConstraints.NORTH;
 		c.fill = GridBagConstraints.BOTH;
-		container.add(localButton, c);
+		this.add(localButton, c);
 	}
 	
 	public void PopulateLists()
@@ -175,5 +201,10 @@ public class QuestionSetInterface extends JFrame
 		for (QuestionSetRemote set : remoteFiles)
 			remoteQuestionSetListModel.addElement(set);
 			
+	}
+
+	public void setSelectionHandler(SelectionHandler<QuestionSet[]> selectionHandler)
+	{
+		this.selectionHandler = selectionHandler;
 	}
 }

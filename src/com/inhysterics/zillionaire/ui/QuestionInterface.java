@@ -11,13 +11,14 @@ import java.util.concurrent.ThreadLocalRandom;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 import com.inhysterics.zillionaire.Category;
 import com.inhysterics.zillionaire.PlayerState;
 import com.inhysterics.zillionaire.Question;
 import com.inhysterics.zillionaire.SelectionHandler;
 
-public class QuestionInterface extends JFrame 
+public class QuestionInterface extends JPanel 
 {
 
 	protected JLabel playerNameLabel;
@@ -42,14 +43,11 @@ public class QuestionInterface extends JFrame
 	public QuestionInterface()
 	{
 		InitializeComponent();
-		
-		this.setSize(720, 480);
 	}
 		
 	protected void InitializeComponent()
 	{
-		Container container = this.getContentPane();
-		container.setLayout(new GridBagLayout());
+		this.setLayout(new GridBagLayout());
 		
 		ActionListener answerListener = new ActionListener() 
 		{
@@ -147,7 +145,7 @@ public class QuestionInterface extends JFrame
 		c.weighty = 0;
 		c.insets = new Insets(20,20,0,20);
 		c.anchor = GridBagConstraints.NORTH;
-		container.add(playerNameLabel, c);
+		this.add(playerNameLabel, c);
 		yRow++;
 
 		c.gridx = 0;
@@ -157,7 +155,7 @@ public class QuestionInterface extends JFrame
 		c.weighty = 1;
 		c.insets = new Insets(0,20,20,20);
 		c.anchor = GridBagConstraints.NORTH;
-		container.add(playerScoreLabel, c);
+		this.add(playerScoreLabel, c);
 		yRow++;
 
 		c.gridx = 0;
@@ -167,7 +165,7 @@ public class QuestionInterface extends JFrame
 		c.weighty = 0;
 		c.insets = new Insets(5,5,40,5);
 		c.anchor = GridBagConstraints.CENTER;
-		container.add(questionLabel, c);
+		this.add(questionLabel, c);
 		yRow++;
 
 		c.gridx = 0;
@@ -177,7 +175,7 @@ public class QuestionInterface extends JFrame
 		c.weighty = 0;
 		c.insets = new Insets(5,20,5,5);
 		c.anchor = GridBagConstraints.CENTER;
-		container.add(answerAButton, c);
+		this.add(answerAButton, c);
 
 		c.gridx = 1;
 		c.gridy = yRow;
@@ -186,7 +184,7 @@ public class QuestionInterface extends JFrame
 		c.weighty = 0;
 		c.insets = new Insets(5,5,5,20);
 		c.anchor = GridBagConstraints.CENTER;
-		container.add(answerBButton, c);
+		this.add(answerBButton, c);
 		yRow++;
 
 		c.gridx = 0;
@@ -196,7 +194,7 @@ public class QuestionInterface extends JFrame
 		c.weighty = 0;
 		c.insets = new Insets(5,20,40,5);
 		c.anchor = GridBagConstraints.CENTER;
-		container.add(answerCButton, c);
+		this.add(answerCButton, c);
 
 		c.gridx = 1;
 		c.gridy = yRow;
@@ -205,7 +203,7 @@ public class QuestionInterface extends JFrame
 		c.weighty = 0;
 		c.insets = new Insets(5,5,40,20);
 		c.anchor = GridBagConstraints.CENTER;
-		container.add(answerDButton, c);
+		this.add(answerDButton, c);
 		yRow++;
 
 		c.gridx = 0;
@@ -215,7 +213,7 @@ public class QuestionInterface extends JFrame
 		c.weighty = 0;
 		c.insets = new Insets(5,20,5,5);
 		c.anchor = GridBagConstraints.CENTER;
-		container.add(fiftyFiftyButton, c);		
+		this.add(fiftyFiftyButton, c);		
 
 		c.gridx = 1;
 		c.gridy = yRow;
@@ -224,7 +222,7 @@ public class QuestionInterface extends JFrame
 		c.weighty = 0;
 		c.insets = new Insets(5,5,5,20);
 		c.anchor = GridBagConstraints.CENTER;
-		container.add(askTheAudianceButton, c);	
+		this.add(askTheAudianceButton, c);	
 		yRow++;
 
 		c.gridx = 0;
@@ -234,7 +232,7 @@ public class QuestionInterface extends JFrame
 		c.weighty = 0;
 		c.insets = new Insets(5,20,20,20);
 		c.anchor = GridBagConstraints.CENTER;
-		container.add(leaveButton, c);		
+		this.add(leaveButton, c);		
 	}
 
 	public void setQuestion(Question question)

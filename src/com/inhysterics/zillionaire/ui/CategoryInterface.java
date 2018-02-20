@@ -13,6 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 
@@ -20,7 +21,7 @@ import com.inhysterics.zillionaire.Category;
 import com.inhysterics.zillionaire.PlayerState;
 import com.inhysterics.zillionaire.SelectionHandler;
 
-public class CategoryInterface extends JFrame {
+public class CategoryInterface extends JPanel {
 
 	protected JLabel playerNameLabel;
 	protected JLabel playerScoreLabel;
@@ -37,15 +38,12 @@ public class CategoryInterface extends JFrame {
 	
 	public CategoryInterface()
 	{
-		InitializeComponent();
-		
-		this.setSize(720, 480);		
+		InitializeComponent();	
 	}
 	
 	protected void InitializeComponent()
 	{
-		Container container = this.getContentPane();
-		container.setLayout(new GridBagLayout());
+		this.setLayout(new GridBagLayout());
 		
 		playerNameLabel = new JLabel("$playerNameLabel", JLabel.CENTER);
 		playerScoreLabel = new JLabel("$playerScoreLabel", JLabel.CENTER);
@@ -88,7 +86,7 @@ public class CategoryInterface extends JFrame {
 		c.weighty = 0;
 		c.insets = new Insets(20,20,0,20);
 		c.anchor = GridBagConstraints.NORTH;
-		container.add(playerNameLabel, c);
+		this.add(playerNameLabel, c);
 		yRow++;
 
 		c.gridy = yRow;
@@ -96,7 +94,7 @@ public class CategoryInterface extends JFrame {
 		c.weighty = 0;
 		c.insets = new Insets(0,20,20,20);
 		c.anchor = GridBagConstraints.NORTH;
-		container.add(playerScoreLabel, c);
+		this.add(playerScoreLabel, c);
 		yRow++;
 
 		c.gridy = yRow;
@@ -104,7 +102,7 @@ public class CategoryInterface extends JFrame {
 		c.weighty = 0;
 		c.insets = new Insets(0,20,0,20);
 		c.anchor = GridBagConstraints.NORTH;
-		container.add(instructionLabel, c);		
+		this.add(instructionLabel, c);		
 		yRow++;
 		
 		c.gridy = yRow;
@@ -113,7 +111,7 @@ public class CategoryInterface extends JFrame {
 		c.insets = new Insets(0,20,0,20);
 		c.anchor = GridBagConstraints.CENTER;
 		c.fill = GridBagConstraints.BOTH;
-		container.add(categoryListScroller, c);
+		this.add(categoryListScroller, c);
 		yRow++;		
 
 		c.gridy = yRow;
@@ -121,7 +119,7 @@ public class CategoryInterface extends JFrame {
 		c.weighty = 0;
 		c.insets = new Insets(0,20,20,20);
 		c.anchor = GridBagConstraints.NORTH;
-		container.add(selectButton, c);		
+		this.add(selectButton, c);		
 		yRow++;
 	}
 	

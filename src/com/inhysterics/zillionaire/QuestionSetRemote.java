@@ -5,6 +5,7 @@ public class QuestionSetRemote
 	protected String name;
 	protected String version;
 	protected String author;
+	protected String description;
 	protected int questions;
 	protected String remote;
 	
@@ -35,6 +36,16 @@ public class QuestionSetRemote
 	{
 		return version;
 	}
+
+	public String getAuthor() 
+	{
+		return author;
+	}
+
+	public String getDescription() 
+	{
+		return description;
+	}
 	
 	public String getRemote() 
 	{
@@ -52,6 +63,6 @@ public class QuestionSetRemote
 	{
 		if (name == null)
 			return "Contacting server..";
-		return String.format("<html>%s v%s<br/>&nbsp;&nbsp;&nbsp;&nbsp;contains %s questions<br/>&nbsp;&nbsp;&nbsp;&nbsp;by %s</html>", name, version, questions, author);  
+		return String.format("<html>%s v%s<br/>&nbsp;&nbsp;&nbsp;&nbsp;contains %s questions<br/>&nbsp;&nbsp;&nbsp;&nbsp;by %s<br/></br>%s</html>", name, version, questions, author, description);  
 	}
 }

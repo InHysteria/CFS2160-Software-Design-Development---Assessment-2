@@ -7,6 +7,8 @@ import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
 
+import javax.swing.JOptionPane;
+
 public class GameState {
 	
 	protected PlayerState[] players;	
@@ -75,22 +77,26 @@ public class GameState {
 		return (lastQuestion = choices.get(r));
 	}
 	
-	public Boolean answerQuestion(Integer choice)
+	public Boolean[] answerQuestion(Integer choice)
 	{
 		PlayerState currentPlayer = getCurrentPlayer();
 		if (lastQuestion.correctAnswer == choice)
 		{
 			currentPlayer.setQuestionNo(currentPlayer.getQuestionNo() + 1);
-			rotatePlayers();
-			return true;
+			
+			return new Boolean[] { true, rotatePlayers() };
 		}
 		else
 		{
 			currentPlayer.hasFinished = true;
 			//Drop player to last milestone
-			rotatePlayers();
-			return false;
+			
+			return new Boolean[] { false, rotatePlayers() };
 		}
+	}
+	public String getQuestionAnswer()
+	{
+		return lastQuestion.answers[lastQuestion.correctAnswer];
 	}
 
 	public PlayerState[] getPlayers() 
@@ -118,6 +124,8 @@ public class GameState {
 				}
 			}				
 		}
+		
+		String taco = "";
 	}
 	
 	public void setPlayers(PlayerState[] players) 

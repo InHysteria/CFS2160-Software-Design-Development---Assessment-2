@@ -185,18 +185,21 @@ public class QuestionSetService
 				Element setNameElement = dom.createElement("Name");
 				Element setVersionElement = dom.createElement("Version");
 				Element setAuthorElement = dom.createElement("Author");
+				Element setDescriptionElement = dom.createElement("Description");
 				Element setQuestionsElement = dom.createElement("Questions");
 				Element setRemoteElement = dom.createElement("Remote");
 
 				setNameElement.setTextContent(set.name);
 				setVersionElement.setTextContent(set.version);
 				setAuthorElement.setTextContent(set.author);
+				setDescriptionElement.setTextContent(set.description);
 				setQuestionsElement.setTextContent(Integer.toString(set.questions.length));
 				setRemoteElement.setTextContent(set.filename);
 
 				setRootElement.appendChild(setNameElement);
 				setRootElement.appendChild(setVersionElement);
 				setRootElement.appendChild(setAuthorElement);
+				setRootElement.appendChild(setDescriptionElement);
 				setRootElement.appendChild(setQuestionsElement);
 				setRootElement.appendChild(setRemoteElement);		
 				rootElement.appendChild(setRootElement);

@@ -158,13 +158,13 @@ public class QuestionInterface extends JPanel
 		this.add(playerScoreLabel, c);
 		yRow++;
 
-		c.gridx = 0;
+		c.gridx = 0; 
 		c.gridy = yRow;
 		c.gridwidth = 2;
-		c.weightx = 1;
+		c.weightx = 1; 
 		c.weighty = 0;
-		c.insets = new Insets(5,5,40,5);
-		c.anchor = GridBagConstraints.CENTER;
+		c.insets = new Insets(5,5,40,5); 
+		c.anchor = GridBagConstraints.CENTER; 
 		this.add(questionLabel, c);
 		yRow++;
 
@@ -254,11 +254,11 @@ public class QuestionInterface extends JPanel
 		this.player = player;
 
 		playerNameLabel.setText(player.getName());
-		playerScoreLabel.setText("£" + player.getScore());
+		playerScoreLabel.setText("ï¿½" + player.getScore());
 
 		fiftyFiftyButton.setEnabled(player.getHasFiftyFifty());
 		askTheAudianceButton.setEnabled(player.getHasAskAudiance());
-		leaveButton.setText("Take £" + player.getScore() + " and leave..");
+		leaveButton.setText("Take ï¿½" + player.getScore() + " and leave..");
 	}
 
 	public void setSelectionHandler(SelectionHandler<Integer> selectionHandler)

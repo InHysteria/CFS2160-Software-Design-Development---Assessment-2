@@ -18,6 +18,7 @@ public class QuestionSet {
 	protected String name;
 	protected String version;
 	protected String author;
+	protected String description;
 	protected String filename;
 	
 	protected HashMap<Integer, Category> categories;
@@ -30,11 +31,12 @@ public class QuestionSet {
 	@Override
 	public String toString()
 	{
-		return String.format("<html>%s v%s<br/>&nbsp;&nbsp;&nbsp;&nbsp;contains %s questions<br/>&nbsp;&nbsp;&nbsp;&nbsp;by %s</html>", 
+		return String.format("<html>%s v%s<br/>&nbsp;&nbsp;&nbsp;&nbsp;contains %s questions<br/>&nbsp;&nbsp;&nbsp;&nbsp;by %s<br/><br/>%s</html>", 
 				name, 
 				version, 
 				questions.length, 
-				author);  
+				author,
+				description);  
 	}
 	
 
@@ -56,6 +58,11 @@ public class QuestionSet {
 	public String getFilename() 
 	{
 		return filename;
+	}
+
+	public String getDescription() 
+	{
+		return description;
 	}
 
 	public HashMap<Integer, Category> getCategories() 
@@ -100,6 +107,7 @@ public class QuestionSet {
 				NodeList nameList = rootElement.getElementsByTagName("Name"); //TODO: Demagicify these strings
 				NodeList versionList = rootElement.getElementsByTagName("Version");
 				NodeList authorList = rootElement.getElementsByTagName("Author");
+				NodeList descriptionList = rootElement.getElementsByTagName("Description");
 				NodeList categoryList = rootElement.getElementsByTagName("Categories");
 				NodeList questionList = rootElement.getElementsByTagName("Questions");
 				
@@ -111,9 +119,13 @@ public class QuestionSet {
 				if (versionList.getLength() == 0) questionset.version = "0.0";
 				else questionset.version = versionList.item(0).getTextContent();
 				
-				//Version
+				//Author
 				if (authorList.getLength() == 0) questionset.author = "Anonymous";
 				else questionset.author = authorList.item(0).getTextContent();
+				
+				//Description
+				if (descriptionList.getLength() == 0) questionset.description = "This question set has no description.";
+				else questionset.description = descriptionList.item(0).getTextContent();
 				
 				//Category
 				if (categoryList.getLength() == 0) throw new Exception("Question set does not have a 'Categories' definition.");

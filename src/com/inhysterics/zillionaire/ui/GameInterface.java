@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import com.inhysterics.zillionaire.Category;
@@ -44,14 +45,20 @@ public class GameInterface extends JFrame
 	protected PlayerInterface playerInterface;
 	protected CategoryInterface categoryInterface;
 	protected QuestionInterface questionInterface;	
+	protected FinalScoreInterface finalScoreInterface;
 	
 	public GameInterface()
 	{
 		super("Who Wants To Be A Zillionaire!");
-		state = new GameState();
 
-		InitializeComponent();
 		
+		InitializeComponent();
+		Initialize();
+	}
+	
+	protected void Initialize()
+	{
+		state = new GameState();
 		display(configInterface);
 	}
 	
@@ -64,6 +71,7 @@ public class GameInterface extends JFrame
 		playerInterface = new PlayerInterface();
 		categoryInterface = new CategoryInterface();
 		questionInterface = new QuestionInterface();
+		finalScoreInterface = new FinalScoreInterface();
 		
 		configInterface.setSelectionHandler(new SelectionHandler<PlayerState[]>()
 		{
@@ -112,18 +120,36 @@ public class GameInterface extends JFrame
 			@Override
 			public void OnSelectionMade(Integer selectedObject) 
 			{
-				if (state.answerQuestion(selectedObject))
+				Boolean[] results = state.answerQuestion(selectedObject);
+				if (results[0]) //Is question correct?
 				{
-					//Correct
+					JOptionPane.showMessageDialog(null, "Correct!");
 					playerInterface.setGame(state);
 					display(playerInterface);
 				}
 				else
 				{
-					//TODO: Incorrect
-					playerInterface.setGame(state);
-					display(playerInterface);
+					JOptionPane.showMessageDialog(null, "Incorrect, the correct answer was '"+state.getQuestionAnswer()+"'!");
+					if (results[1]) //Is there at least one player who hasn't answered a question incorrectly?
+					{
+						playerInterface.setGame(state);
+						display(playerInterface);	
+					}
+					else
+					{
+						finalScoreInterface.setGame(state);
+						display(finalScoreInterface);
+					}
 				}
+			}			
+		});
+		
+		finalScoreInterface.setSelectionHandler(new ActionListener() 
+		{
+			@Override
+			public void actionPerformed(ActionEvent arg0)
+			{
+				/*Re*/Initialize();
 			}			
 		});
 
@@ -132,6 +158,7 @@ public class GameInterface extends JFrame
 		wrapper.add(playerInterface, playerInterface.getClass().getName());
 		wrapper.add(categoryInterface, categoryInterface.getClass().getName());
 		wrapper.add(questionInterface, questionInterface.getClass().getName());
+		wrapper.add(finalScoreInterface, finalScoreInterface.getClass().getName());
 		this.add(wrapper);
 	}
 	

@@ -9,6 +9,8 @@ import org.w3c.dom.Element;
 
 public class Question {
 	
+	protected String id;
+	
 	protected String body;
 
 	protected int[] categories;
@@ -82,6 +84,8 @@ public class Question {
 		*/
 		public static Question CreateQuestion(Element questionXML, ArrayList<Exception> errors) {
 			Question question = new Question();
+			
+			question.id = java.util.UUID.randomUUID().toString();
 
 			int i;
 			NodeList categoryList = questionXML.getElementsByTagName("Category"); //TODO: Demagicify these strings

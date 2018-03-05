@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.inhysterics.zillionaire.Category;
+import com.inhysterics.zillionaire.GameService;
 import com.inhysterics.zillionaire.PlayerState;
 import com.inhysterics.zillionaire.Question;
 import com.inhysterics.zillionaire.SelectionHandler;
@@ -38,8 +39,7 @@ public class QuestionInterface extends JPanel
 	protected JPanel askTheAudianceContainer;
 	
 	protected JButton leaveButton;
-	
-	
+		
 	protected Question question;
 	protected PlayerState player;
 
@@ -68,19 +68,19 @@ public class QuestionInterface extends JPanel
 		playerScoreLabel = new JLabel("$playerScoreLabel", JLabel.CENTER);
 		questionLabel = new JLabel("$questionLabel", JLabel.CENTER);		
 		
-		answerAButton = new JButton("$answerAButton");
+		answerAButton = new JButton("A");
 		answerAButton.setActionCommand("0");
 		answerAButton.addActionListener(answerListener);	
 		
-		answerBButton = new JButton("$answerBButton");
+		answerBButton = new JButton("B");
 		answerBButton.setActionCommand("1");
 		answerBButton.addActionListener(answerListener);
 		
-		answerCButton = new JButton("$answerCButton");
+		answerCButton = new JButton("C");
 		answerCButton.setActionCommand("2");
 		answerCButton.addActionListener(answerListener);
 		
-		answerDButton = new JButton("$answerDButton");
+		answerDButton = new JButton("D");
 		answerDButton.setActionCommand("3");
 		answerDButton.addActionListener(answerListener);
 
@@ -156,6 +156,8 @@ public class QuestionInterface extends JPanel
 		
 		
 		leaveButton = new JButton("Take $playerScoreLabel and leave..");
+		leaveButton.setActionCommand("-1");
+		leaveButton.addActionListener(answerListener);
 
 		int yRow = 0;
 		GridBagConstraints c = new GridBagConstraints();
@@ -278,14 +280,16 @@ public class QuestionInterface extends JPanel
 		
 		String[] answers = question.getAnswers();
 		
-		answerAButton.setText(answers[0]);
+		answerAButton.setText("A: " + answers[0]);
 		answerAButton.setEnabled(true);
-		answerBButton.setText(answers[1]);
+		answerBButton.setText("B: " + answers[1]);
 		answerBButton.setEnabled(true);
-		answerCButton.setText(answers[2]);
+		answerCButton.setText("C: " + answers[2]);
 		answerCButton.setEnabled(true);
-		answerDButton.setText(answers[3]);
+		answerDButton.setText("D: " + answers[3]);
 		answerDButton.setEnabled(true);
+		
+		askTheAudiance.setVisible(false);
 	}
 	
 	public void setPlayer(PlayerState player)
@@ -298,6 +302,11 @@ public class QuestionInterface extends JPanel
 		fiftyFiftyButton.setEnabled(player.getHasFiftyFifty());
 		askTheAudianceButton.setEnabled(player.getHasAskAudiance());
 		leaveButton.setText("Take " + Zillionaire.CurrencySymbol + player.getScore() + " and leave..");
+	}
+	
+	public void reset()
+	{
+		askTheAudiance.setPrecents(GameService.getQuestionAskTheAudiance());
 	}
 
 	public void setSelectionHandler(SelectionHandler<Integer> selectionHandler)

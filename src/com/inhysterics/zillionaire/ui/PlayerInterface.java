@@ -20,6 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 
+import com.inhysterics.zillionaire.GameService;
 import com.inhysterics.zillionaire.GameState;
 import com.inhysterics.zillionaire.PlayerState;
 
@@ -32,18 +33,11 @@ public class PlayerInterface extends JPanel {
 	protected JScrollPane playerListScroller;
 	protected JButton selectButton;
 	
-	protected GameState game;
-	
 	protected ActionListener selectionHandler;
 	
 	public PlayerInterface()
 	{
-		InitializeComponent();	
-	}
-	public PlayerInterface(GameState game)
-	{
-		this();
-		setGame(game);
+		InitializeComponent();
 	}
 	
 	@SuppressWarnings("serial")
@@ -114,16 +108,14 @@ public class PlayerInterface extends JPanel {
 		yRow++;
 	}
 	
-	public void setGame(GameState game)
+	public void reset()
 	{
-		this.game = game;
-		
-		PlayerState nextPlayer = game.getCurrentPlayer();
+		PlayerState nextPlayer = GameService.getCurrentPlayer();
 		instructionLabel.setText(String.format("The next player in the rotation is %s", nextPlayer.getName()));
 		selectButton.setText(String.format("%s is ready", nextPlayer.getName()));
 		playerListModel.clear();		
 		
-		PlayerState[] players = game.getPlayers();
+		PlayerState[] players = GameService.getPlayers();
 		Arrays.sort(players, Collections.reverseOrder());
 		for (PlayerState player : players)
 			playerListModel.addElement(player);

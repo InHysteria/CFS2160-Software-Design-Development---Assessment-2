@@ -13,10 +13,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import com.inhysterics.zillionaire.Category;
+import com.inhysterics.zillionaire.GameService;
 import com.inhysterics.zillionaire.GameState;
 import com.inhysterics.zillionaire.PlayerState;
+import com.inhysterics.zillionaire.Question;
 import com.inhysterics.zillionaire.QuestionSet;
 import com.inhysterics.zillionaire.SelectionHandler;
+import com.inhysterics.zillionaire.Zillionaire;
 
 /*
 
@@ -36,8 +39,6 @@ TODO: FinalScoreInterface
 
 public class GameInterface extends JFrame
 {
-	protected GameState state;
-
 	protected CardLayout manager;
 	protected JPanel wrapper;
 	protected ConfigInterface configInterface;
@@ -58,7 +59,6 @@ public class GameInterface extends JFrame
 	
 	protected void Initialize()
 	{
-		state = new GameState();
 		display(configInterface);
 	}
 	
@@ -78,7 +78,7 @@ public class GameInterface extends JFrame
 			@Override
 			public void OnSelectionMade(PlayerState[] selectedObject) 
 			{
-				state.setPlayers(selectedObject);
+				GameService.setPlayers(selectedObject);
 				display(questionSetInterface);
 			}			
 		});
@@ -88,8 +88,8 @@ public class GameInterface extends JFrame
 			@Override
 			public void OnSelectionMade(QuestionSet[] selectedObject) 
 			{
-				state.setQuestions(selectedObject);
-				playerInterface.setGame(state);
+				GameService.setQuestions(selectedObject);
+				playerInterface.reset();
 				display(playerInterface);
 			}			
 		});
@@ -99,8 +99,8 @@ public class GameInterface extends JFrame
 			@Override
 			public void actionPerformed(ActionEvent arg0) 
 			{
-				categoryInterface.setPlayer(state.getCurrentPlayer());
-				categoryInterface.setCategories(state.getCategoryChoices(3));
+				categoryInterface.setPlayer(GameService.getCurrentPlayer());
+				categoryInterface.setCategories(GameService.getCategoryChoices(3));
 				display(categoryInterface);
 			}			
 		});
@@ -110,9 +110,16 @@ public class GameInterface extends JFrame
 			@Override
 			public void OnSelectionMade(Category selectedObject) 
 			{
-				questionInterface.setPlayer(state.getCurrentPlayer());
-				questionInterface.setQuestion(state.getQuestion(selectedObject));
-				display(questionInterface);
+				Question question = GameService.getNewQuestion(selectedObject);
+				if (question == null)
+					JOptionPane.showMessageDialog(null, "There were no questions for that category. Please select another.");
+				else
+				{
+					questionInterface.setPlayer(GameService.getCurrentPlayer());
+					questionInterface.setQuestion(question);
+					questionInterface.reset();
+					display(questionInterface);
+				}
 			}			
 		});
 		
@@ -121,26 +128,36 @@ public class GameInterface extends JFrame
 			@Override
 			public void OnSelectionMade(Integer selectedObject) 
 			{
-				Boolean[] results = state.answerQuestion(selectedObject);
-				if (results[0]) //Is question correct?
+				Boolean isGameContinuing = false;
+				if (selectedObject == -1)
 				{
-					JOptionPane.showMessageDialog(null, "Correct!");
-					playerInterface.setGame(state);
+					//Player choose to finish here.
+					JOptionPane.showMessageDialog(null, String.format("You decide to play it safe and leave with.. %s%s", 
+							Zillionaire.CurrencySymbol, 
+							GameService.getCurrentPlayer().getScore()));
+					GameService.getCurrentPlayer().setHasFinished(true);
+					isGameContinuing = GameService.rotatePlayers();
+				}
+				else
+				{
+					
+					Boolean[] results = GameService.answerLastQuestion(selectedObject);
+					if (results[0]) //Is question correct?
+						JOptionPane.showMessageDialog(null, "Correct!");
+					else
+						JOptionPane.showMessageDialog(null, "Incorrect! The correct answer was '"+GameService.getLastQuestionAnswerString()+"'.");
+					
+					isGameContinuing = results[1];
+				}
+				if (isGameContinuing)
+				{
+					playerInterface.reset();
 					display(playerInterface);
 				}
 				else
 				{
-					JOptionPane.showMessageDialog(null, "Incorrect, the correct answer was '"+state.getQuestionAnswer()+"'!");
-					if (results[1]) //Is there at least one player who hasn't answered a question incorrectly?
-					{
-						playerInterface.setGame(state);
-						display(playerInterface);	
-					}
-					else
-					{
-						finalScoreInterface.setGame(state);
-						display(finalScoreInterface);
-					}
+					finalScoreInterface.reset();
+					display(finalScoreInterface);
 				}
 			}			
 		});

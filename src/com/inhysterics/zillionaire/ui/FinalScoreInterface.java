@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 
+import com.inhysterics.zillionaire.GameService;
 import com.inhysterics.zillionaire.GameState;
 import com.inhysterics.zillionaire.PlayerState;
 
@@ -28,8 +29,6 @@ public class FinalScoreInterface extends JPanel
 	protected JList<PlayerState> playerList;
 	protected JScrollPane playerListScroller;
 	protected JButton selectButton;
-	
-	protected GameState game;
 	
 	protected ActionListener selectionHandler;
 
@@ -43,7 +42,7 @@ public class FinalScoreInterface extends JPanel
 		this.setLayout(new GridBagLayout());
 		
 		captionLabel = new JLabel("Final scores are..", JLabel.CENTER);	
-		thankYouLabel = new JLabel("Thank you for playing, who wants to be a Zillionaire!.", JLabel.CENTER);
+		thankYouLabel = new JLabel("Thank you for playing, who wants to be a Zillionaire!", JLabel.CENTER);
 
 		playerListModel = new DefaultListModel<PlayerState>();
 		playerList = new JList<PlayerState>(playerListModel);
@@ -105,13 +104,11 @@ public class FinalScoreInterface extends JPanel
 		yRow++;
 	}
 	
-	public void setGame(GameState game)
-	{
-		this.game = game;
-		
+	public void reset()
+	{		
 		playerListModel.clear();		
 		
-		PlayerState[] players = game.getPlayers();
+		PlayerState[] players = GameService.getPlayers();
 		Arrays.sort(players, Collections.reverseOrder());
 		for (PlayerState player : players)
 			playerListModel.addElement(player);

@@ -88,7 +88,7 @@ public class QuestionSetService
 						nameList.getLength() == 0 ? "$MISSING$" : nameList.item(0).getTextContent(),
 						versionList.getLength() == 0 ? "$MISSING$" : versionList.item(0).getTextContent(),
 						authorList.getLength() == 0 ? "$MISSING$" : authorList.item(0).getTextContent(),
-						descriptionList.getLength() == 0 ? "" : authorList.item(0).getTextContent(),
+						descriptionList.getLength() == 0 ? "" : descriptionList.item(0).getTextContent(),
 						Integer.parseInt(questionsList.getLength() == 0 ? "0" : questionsList.item(0).getTextContent()),
 						remoteList.getLength() == 0 ? "$MISSING$" : remoteList.item(0).getTextContent()
 				);						

@@ -1,5 +1,6 @@
 package com.inhysterics.zillionaire.ui;
 
+import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -17,6 +18,7 @@ import com.inhysterics.zillionaire.Category;
 import com.inhysterics.zillionaire.PlayerState;
 import com.inhysterics.zillionaire.Question;
 import com.inhysterics.zillionaire.SelectionHandler;
+import com.inhysterics.zillionaire.Zillionaire;
 
 public class QuestionInterface extends JPanel 
 {
@@ -32,8 +34,11 @@ public class QuestionInterface extends JPanel
 
 	protected JButton fiftyFiftyButton;
 	protected JButton askTheAudianceButton;
+	protected ATAInterface askTheAudiance;
+	protected JPanel askTheAudianceContainer;
 	
 	protected JButton leaveButton;
+	
 	
 	protected Question question;
 	protected PlayerState player;
@@ -61,7 +66,7 @@ public class QuestionInterface extends JPanel
 
 		playerNameLabel = new JLabel("$playerNameLabel", JLabel.CENTER);
 		playerScoreLabel = new JLabel("$playerScoreLabel", JLabel.CENTER);
-		questionLabel = new JLabel("$questionLabel", JLabel.CENTER);
+		questionLabel = new JLabel("$questionLabel", JLabel.CENTER);		
 		
 		answerAButton = new JButton("$answerAButton");
 		answerAButton.setActionCommand("0");
@@ -130,6 +135,26 @@ public class QuestionInterface extends JPanel
 		});
 		
 		askTheAudianceButton = new JButton("Ask the audiance"); 
+		askTheAudianceButton.addActionListener(new ActionListener() 
+		{
+			@Override
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				if (question != null && player != null && player.getHasAskAudiance())
+				{
+					askTheAudiance.setVisible(true);
+					player.setHasAskAudiance(false);
+					askTheAudianceButton.setEnabled(false);
+				}
+			}			
+		});
+		askTheAudiance = new ATAInterface();	
+		askTheAudiance.setVisible(false);
+		askTheAudianceContainer = new JPanel();
+		askTheAudianceContainer.setLayout(new BorderLayout());
+		askTheAudianceContainer.add(askTheAudiance, BorderLayout.EAST);
+		
+		
 		leaveButton = new JButton("Take $playerScoreLabel and leave..");
 
 		int yRow = 0;
@@ -152,10 +177,20 @@ public class QuestionInterface extends JPanel
 		c.gridy = yRow;
 		c.gridwidth = 2;
 		c.weightx = 1;
-		c.weighty = 1;
-		c.insets = new Insets(0,20,20,20);
+		c.weighty = 0;
+		c.insets = new Insets(0,20,5,20);
 		c.anchor = GridBagConstraints.NORTH;
 		this.add(playerScoreLabel, c);
+		yRow++;
+		
+		c.gridx = 0; 
+		c.gridy = yRow;
+		c.gridwidth = 2;
+		c.weightx = 1; 
+		c.weighty = 1;
+		c.insets = new Insets(5,5,5,25); 
+		c.anchor = GridBagConstraints.NORTH; 
+		this.add(askTheAudianceContainer, c);
 		yRow++;
 
 		c.gridx = 0; 
@@ -163,7 +198,7 @@ public class QuestionInterface extends JPanel
 		c.gridwidth = 2;
 		c.weightx = 1; 
 		c.weighty = 0;
-		c.insets = new Insets(5,5,40,5); 
+		c.insets = new Insets(5,5,5,5); 
 		c.anchor = GridBagConstraints.CENTER; 
 		this.add(questionLabel, c);
 		yRow++;
@@ -244,9 +279,13 @@ public class QuestionInterface extends JPanel
 		String[] answers = question.getAnswers();
 		
 		answerAButton.setText(answers[0]);
+		answerAButton.setEnabled(true);
 		answerBButton.setText(answers[1]);
+		answerBButton.setEnabled(true);
 		answerCButton.setText(answers[2]);
+		answerCButton.setEnabled(true);
 		answerDButton.setText(answers[3]);
+		answerDButton.setEnabled(true);
 	}
 	
 	public void setPlayer(PlayerState player)
@@ -254,11 +293,11 @@ public class QuestionInterface extends JPanel
 		this.player = player;
 
 		playerNameLabel.setText(player.getName());
-		playerScoreLabel.setText("�" + player.getScore());
+		playerScoreLabel.setText(Zillionaire.CurrencySymbol + player.getScore());
 
 		fiftyFiftyButton.setEnabled(player.getHasFiftyFifty());
 		askTheAudianceButton.setEnabled(player.getHasAskAudiance());
-		leaveButton.setText("Take �" + player.getScore() + " and leave..");
+		leaveButton.setText("Take " + Zillionaire.CurrencySymbol + player.getScore() + " and leave..");
 	}
 
 	public void setSelectionHandler(SelectionHandler<Integer> selectionHandler)

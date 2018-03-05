@@ -5,20 +5,18 @@ import java.io.File;
 import java.io.FilenameFilter;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Currency;
+import java.util.Locale;
 
 import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 
-import com.inhysterics.zillionaire.ui.CategoryInterface;
-import com.inhysterics.zillionaire.ui.ConfigInterface;
 import com.inhysterics.zillionaire.ui.GameInterface;
-import com.inhysterics.zillionaire.ui.PlayerInterface;
-import com.inhysterics.zillionaire.ui.PlayerMessageInterface;
-import com.inhysterics.zillionaire.ui.QuestionInterface;
-import com.inhysterics.zillionaire.ui.QuestionSetInterface;
 
 public class Zillionaire implements Runnable 
 {
+	
+	public static String CurrencySymbol = Currency.getInstance(Locale.UK).getSymbol();
 	
 	//TODO: Go clean up/work out how best to actually do it, the XML parsing for question sets.
 	//TODO: Take alllllllll these hardcoded strings and put em in a strings resource etc;

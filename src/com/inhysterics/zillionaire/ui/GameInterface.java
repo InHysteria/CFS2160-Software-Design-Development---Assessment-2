@@ -99,6 +99,7 @@ public class GameInterface extends JFrame
 			@Override
 			public void actionPerformed(ActionEvent arg0) 
 			{
+				categoryInterface.setPlayer(state.getCurrentPlayer());
 				categoryInterface.setCategories(state.getCategoryChoices(3));
 				display(categoryInterface);
 			}			
@@ -150,6 +151,7 @@ public class GameInterface extends JFrame
 			public void actionPerformed(ActionEvent arg0)
 			{
 				/*Re*/Initialize();
+				configInterface.clear();
 			}			
 		});
 

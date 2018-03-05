@@ -31,7 +31,7 @@ public class QuestionSet {
 	@Override
 	public String toString()
 	{
-		return String.format("<html>%s v%s<br/>&nbsp;&nbsp;&nbsp;&nbsp;contains %s questions<br/>&nbsp;&nbsp;&nbsp;&nbsp;by %s<br/><br/>%s</html>", 
+		return String.format("<html>%s v%s<br/>&nbsp;&nbsp;&nbsp;&nbsp;contains %s questions<br/>&nbsp;&nbsp;&nbsp;&nbsp;by %s<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;<i>%s</i><br/>&nbsp;</html>", 
 				name, 
 				version, 
 				questions.length, 

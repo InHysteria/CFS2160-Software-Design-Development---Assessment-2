@@ -167,8 +167,9 @@ public class ConfigInterface extends JPanel
 		this.selectionHandler = selectionHandler;
 	}	
 	
-	protected void addPlayer(String name)
+	public void clear()
 	{
+		playerListModel.clear();
 	}
 }
 

@@ -98,6 +98,31 @@ public class GameState {
 	{
 		return lastQuestion.answers[lastQuestion.correctAnswer];
 	}
+	
+	
+	private final float[] getQuestionAskTheAudianceCorrectTuning = new float[] {
+		0.85f,0.85f,0.85f,0.85f,
+		0.75f,0.75f,0.75f,0.75f,0.75f,0.75f,0.75f,
+		0.65f,0.65f,0.65f,0.65f,
+		0.5f
+	};
+	public float[] getQuestionAskTheAudiance()
+	{
+		ThreadLocalRandom random = ThreadLocalRandom.current();
+		int stage = getCurrentPlayer().questionNo;
+		float[]	out = new float[4];
+				
+		for (int i = 0; i < 4; i++)
+			out[i] = (lastQuestion.correctAnswer == i && stage < getQuestionAskTheAudianceCorrectTuning.length
+				? getQuestionAskTheAudianceCorrectTuning[stage] 
+				: 0.5f) + random.nextFloat();
+		
+		float size = out[0] + out[1] + out[2] + out[3];
+		for (int i = 0; i < 4; i++)
+			out[i] = out[i] / size;
+		
+		return out;
+	}
 
 	public PlayerState[] getPlayers() 
 	{

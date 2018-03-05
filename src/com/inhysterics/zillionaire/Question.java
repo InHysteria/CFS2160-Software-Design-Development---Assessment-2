@@ -15,7 +15,8 @@ public class Question {
 	protected String[] answers;
 
 	protected int correctAnswer;
-	protected int stage;
+	protected int minstage;
+	protected int maxstage;
 	
 	protected Question() {
 		
@@ -26,13 +27,15 @@ public class Question {
 			String[] answers,
 			
 			int correctAnswer,
-			int stage) 
+			int minstage,
+			int maxstage) 
 	{
 		this.body = message;
 		this.answers = answers;
 		
 		this.correctAnswer = correctAnswer;
-		this.stage = stage;
+		this.minstage = minstage;
+		this.maxstage = maxstage;
 	}
 	
 	public String getMessage() {
@@ -51,8 +54,12 @@ public class Question {
 		return correctAnswer;
 	}
 
-	public int getStage() {
-		return stage;
+	public int getMinStage() {
+		return minstage;
+	}	
+
+	public int getMaxStage() {
+		return maxstage;
 	}	
 	
 	//Still working out quite how I want these classes to be created, but in the interests of speed I'm going to do this..
@@ -80,7 +87,9 @@ public class Question {
 			NodeList categoryList = questionXML.getElementsByTagName("Category"); //TODO: Demagicify these strings
 			NodeList answerList = questionXML.getElementsByTagName("Answer");
 			NodeList bodyList = questionXML.getElementsByTagName("Body");
-
+			NodeList minStageList = questionXML.getElementsByTagName("MinStage");
+			NodeList maxStageList = questionXML.getElementsByTagName("MaxStage");
+			
 			//Category
 			question.categories = new int[categoryList.getLength()];
 			for (i = 0; i < categoryList.getLength(); i++)
@@ -115,6 +124,35 @@ public class Question {
 			//Body
 			if (bodyList.getLength() == 0) question.body = "!!NO QUESTION BODY!!";
 			else question.body = bodyList.item(0).getTextContent();
+			
+			//MinStage
+			if (minStageList.getLength() == 0) question.minstage = 0;
+			else
+			{
+				try 
+				{
+					question.minstage = Integer.parseInt(minStageList.item(0).getTextContent()); 
+				}
+				catch (Exception e)
+				{
+					errors.add(e);
+				}
+			}
+
+			
+			//MaxStage
+			if (minStageList.getLength() == 0) question.maxstage = question.minstage;
+			else
+			{
+				try 
+				{
+					question.maxstage = Integer.parseInt(maxStageList.item(0).getTextContent()); 
+				}
+				catch (Exception e)
+				{
+					errors.add(e);
+				}
+			}
 						
 			return question;				
 		}

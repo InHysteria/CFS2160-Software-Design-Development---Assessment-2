@@ -14,15 +14,17 @@ public class QuestionSetRemote
 		this.name = null;
 		this.version = null;
 		this.author = null;
+		this.description = null;
 		this.questions = -1;
 		this.remote = null;
 	}
 	
-	public QuestionSetRemote(String name, String version, String author, int questions, String remote)
+	public QuestionSetRemote(String name, String version, String author, String description, int questions, String remote)
 	{
 		this.name = name;
 		this.version = version;
 		this.author = author;
+		this.description = description;
 		this.questions = questions;
 		this.remote = remote;
 	}
@@ -63,6 +65,11 @@ public class QuestionSetRemote
 	{
 		if (name == null)
 			return "Contacting server..";
-		return String.format("<html>%s v%s<br/>&nbsp;&nbsp;&nbsp;&nbsp;contains %s questions<br/>&nbsp;&nbsp;&nbsp;&nbsp;by %s<br/></br>%s</html>", name, version, questions, author, description);  
+		return String.format("<html>%s v%s<br/>&nbsp;&nbsp;&nbsp;&nbsp;contains %s questions<br/>&nbsp;&nbsp;&nbsp;&nbsp;by %s<br/></br>&nbsp;&nbsp;&nbsp;&nbsp;<i>%s</i><br/>&nbsp;</html>", 
+				name, 
+				version, 
+				questions, 
+				author, 
+				description);  
 	}
 }

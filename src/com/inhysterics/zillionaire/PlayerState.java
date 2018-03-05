@@ -23,8 +23,9 @@ public class PlayerState implements Comparable<PlayerState>
 	@Override
 	public String toString()
 	{
-		return String.format("<html>%s<br/>&nbsp;&nbsp;&nbsp;&nbsp;Winnings: £%s</html>",
+		return String.format("<html>%s<br/>&nbsp;&nbsp;&nbsp;&nbsp;Winnings: %s%s</html>",
 				getName(),
+				Zillionaire.CurrencySymbol,
 				getScore());
 	}
 

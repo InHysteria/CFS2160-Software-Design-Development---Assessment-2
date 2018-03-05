@@ -1,0 +1,32 @@
+<QuestionSet>
+	<Name>Question Set Template</Name>
+	<Version>0.0.0</Version>
+	<Author>Example Author</Author>
+	<Description>An almost empty question set used to aid in creating new question sets.</Description>
+	<Categories>
+		<CategoryDefinition id="0">Example Category</CategoryDefinition>
+	</Categories>
+	<Questions>
+		<Question>
+			<Category>0</Category>
+			<!-- The id of the category this question belongs too (Note it can belong to multiple by specifying the element multiple times -->		
+			
+			<MinStage>0</MinStage>
+			<!-- This is how far into the game the players must be before receiving this question. --> 
+			<!-- '0' means this question can show up immediately. '1' means it can show up after the first question, '2' after the second, etc.. -->	
+			<!-- When omitted this becomes 0 -->
+			
+			<MaxStage>0</MaxStage>
+			<!-- This is how far into the game the players can be before they stop receiving this question. --> 
+			<!-- '0' means this question could only be given for the first question. '1' means it can show up until the second question, '2' until the third, etc.. -->
+			<!-- When omitted this becomes the same value as MinStage -->
+					
+			
+			<Body>This is the body of the example question</Body>
+			<Answer>These are the answers to the question.</Answer>
+			<Answer correct="">This one is marked as the correct answer.</Answer>
+			<Answer>The others are wrong.</Answer>
+			<Answer>The answers will be shown in this order.</Answer>
+		</Question> 
+	</Questions>
+</QuestionSet>

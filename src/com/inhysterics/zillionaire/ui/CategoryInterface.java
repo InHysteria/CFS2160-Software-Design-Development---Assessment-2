@@ -20,6 +20,7 @@ import javax.swing.ListSelectionModel;
 import com.inhysterics.zillionaire.Category;
 import com.inhysterics.zillionaire.PlayerState;
 import com.inhysterics.zillionaire.SelectionHandler;
+import com.inhysterics.zillionaire.Zillionaire;
 
 public class CategoryInterface extends JPanel {
 
@@ -137,7 +138,7 @@ public class CategoryInterface extends JPanel {
 		this.player = player;
 
 		playerNameLabel.setText(player.getName());
-		playerScoreLabel.setText("£" + player.getScore());
+		playerScoreLabel.setText(Zillionaire.CurrencySymbol + player.getScore());
 	}
 
 	public void setSelectionHandler(SelectionHandler<Category> selectionHandler)

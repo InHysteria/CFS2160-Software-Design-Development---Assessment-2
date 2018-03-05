@@ -2,9 +2,18 @@
 <QuestionSetManifest>
 <QuestionSetRemote>
 <Name>Debug Questions</Name>
-<Version>0.0.1</Version>
+<Version>0.0.3</Version>
 <Author>InHysteria</Author>
-<Questions>3</Questions>
+<Description>A small set of questions for debugging the program.</Description>
+<Questions>9</Questions>
 <Remote>debug.questionset</Remote>
+</QuestionSetRemote>
+<QuestionSetRemote>
+<Name>Question Set Template</Name>
+<Version>0.0.0</Version>
+<Author>Example Author</Author>
+<Description>An almost empty question set used to aid in creating new question sets.</Description>
+<Questions>1</Questions>
+<Remote>template.questionset</Remote>
 </QuestionSetRemote>
 </QuestionSetManifest>

@@ -1,0 +1,21 @@
+<QuestionSet>
+	<Name>Test Question Set</Name>
+	<Version>0.0.1</Version>
+	<Author>Gemma Mallinson</Author>
+	<Description>This is a test set not to be included in release, it is used during unit testing.</Description>
+	<Categories>
+		<CategoryDefinition id="0">cat1</CategoryDefinition>
+	</Categories>
+	<Questions>
+		<Question>
+			<Category>0</Category>
+			<MinStage>0</MinStage>			
+			<MaxStage>100</MaxStage>							
+			<Body>b9d25dee-769c-4895-a5da-2444d7abee9c</Body>
+			<Answer>a</Answer>
+			<Answer correct="">b</Answer>
+			<Answer>c</Answer>
+			<Answer>d</Answer>
+		</Question> 
+	</Questions>
+</QuestionSet>

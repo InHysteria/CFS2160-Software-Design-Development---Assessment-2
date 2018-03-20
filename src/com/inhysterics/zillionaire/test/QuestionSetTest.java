@@ -1,4 +1,4 @@
-package com.inhysterics.zillioniare.test;
+package com.inhysterics.zillionaire.test;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;

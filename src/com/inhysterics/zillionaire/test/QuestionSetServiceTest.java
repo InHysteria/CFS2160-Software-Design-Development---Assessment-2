@@ -1,4 +1,4 @@
-package com.inhysterics.zillioniare.test;
+package com.inhysterics.zillionaire.test;
 
 import org.junit.Test;
 

@@ -9,6 +9,14 @@
 <Remote>debug.questionset</Remote>
 </QuestionSetRemote>
 <QuestionSetRemote>
+<Name>Pub Quiz</Name>
+<Version>1.0.0</Version>
+<Author>http://www.freepubquiz.co.uk (With incorrect answers by Gemma Mallinson)</Author>
+<Description>A set of general knowledge questions provided by http://www.freepubquiz.co.uk.</Description>
+<Questions>29</Questions>
+<Remote>pubquiz.questionset</Remote>
+</QuestionSetRemote>
+<QuestionSetRemote>
 <Name>Question Set Template</Name>
 <Version>0.0.0</Version>
 <Author>Example Author</Author>

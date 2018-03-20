@@ -118,7 +118,6 @@ public class GameInterface extends JFrame
 				{
 					questionInterface.setPlayer(GameService.getCurrentPlayer());
 					questionInterface.setQuestion(question);
-					questionInterface.reset();
 					display(questionInterface);
 				}
 			}			

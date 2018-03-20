@@ -160,20 +160,20 @@ public final class GameService
 	}
 	
 	private static final float[] getQuestionAskTheAudianceCorrectTuning = new float[] {
-		1.15f,1.15f,1.15f,1.15f,
-		1f,1f,1f,1f,1f,1f,1f,
+		2.15f,2.15f,2.15f,2.15f,
+		1.5f,1.5f,1.5f,1.25f,1.25f,1f,1f,
 		0.75f,0.75f,0.75f,0.75f,
 		0.5f
 	};
 	
-	public static float[] getQuestionAskTheAudiance()
+	public static float[] getQuestionAskTheAudiance(ArrayList<Integer> mapping)
 	{
 		ThreadLocalRandom random = ThreadLocalRandom.current();
 		int stage = getCurrentPlayer().questionNo;
 		float[]	out = new float[4];
 				
 		for (int i = 0; i < 4; i++)
-			out[i] = ((currentGame.lastQuestion.correctAnswer == i && stage < getQuestionAskTheAudianceCorrectTuning.length && random.nextInt(4) != 3)
+			out[mapping.get(i)] = ((currentGame.lastQuestion.correctAnswer == i && stage < getQuestionAskTheAudianceCorrectTuning.length && random.nextInt(10) != 9)
 				? getQuestionAskTheAudianceCorrectTuning[stage] 
 				: 0.5f) + random.nextFloat();
 		

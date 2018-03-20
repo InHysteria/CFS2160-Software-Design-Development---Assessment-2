@@ -302,15 +302,15 @@ public class QuestionInterface extends JPanel
 	}
 
 	public void setQuestion(Question question)
-	{
+	{		
 		this.question = question;
 		
-		questionLabel.setText(question.getMessage());
 
-	
-			
-		String[] answers = question.getAnswers();
 		Collections.shuffle(answerRandomisationMapping);
+		String[] answers = question.getAnswers();
+		_resetAskTheAudiance();			
+		
+		questionLabel.setText(question.getMessage());
 		
 		answerAButton.setText("A: " + answers[answerRandomisationMapping.get(0)]);
 		answerAButton.setEnabled(true);
@@ -335,14 +335,14 @@ public class QuestionInterface extends JPanel
 		askTheAudianceButton.setEnabled(player.getHasAskAudiance());
 		leaveButton.setText("Take " + Zillionaire.CurrencySymbol + player.getScore() + " and leave..");
 	}
-	
-	public void reset()
-	{
-		askTheAudiance.setPrecents(GameService.getQuestionAskTheAudiance());
-	}
 
 	public void setSelectionHandler(SelectionHandler<Integer> selectionHandler)
 	{
 		this.selectionHandler = selectionHandler;
+	}
+	
+	private void _resetAskTheAudiance()
+	{
+		askTheAudiance.setPrecents(GameService.getQuestionAskTheAudiance(answerRandomisationMapping));
 	}
 }

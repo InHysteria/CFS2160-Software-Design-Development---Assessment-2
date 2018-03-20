@@ -1,35 +1,29 @@
 package com.inhysterics.zillionaire.ui;
 
 import java.awt.Component;
-import java.awt.Container;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionListener;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashSet;
 
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.DefaultListModel;
 import javax.swing.DefaultListSelectionModel;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.ListCellRenderer;
 import javax.swing.ListSelectionModel;
 
 import com.inhysterics.zillionaire.GameService;
-import com.inhysterics.zillionaire.GameState;
 import com.inhysterics.zillionaire.PlayerState;
 import com.inhysterics.zillionaire.Zillionaire;
 
+@SuppressWarnings("serial")
 public class PlayerInterface extends JPanel {
 
 	protected JLabel captionLabel;
@@ -46,7 +40,6 @@ public class PlayerInterface extends JPanel {
 		InitializeComponent();
 	}
 	
-	@SuppressWarnings("serial")
 	protected void InitializeComponent()
 	{
 		this.setLayout(new GridBagLayout());
@@ -67,6 +60,7 @@ public class PlayerInterface extends JPanel {
 		});
 		playerList.setCellRenderer(new DefaultListCellRenderer() {
 
+			@SuppressWarnings("rawtypes")
 			@Override
 		    public Component getListCellRendererComponent(
 		            JList list,

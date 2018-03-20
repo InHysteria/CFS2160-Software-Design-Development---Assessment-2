@@ -7,11 +7,9 @@ import static org.junit.Assert.fail;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.concurrent.ThreadLocalRandom;
 
 import org.junit.Test;
 
-import com.inhysterics.zillionaire.GameService;
 import com.inhysterics.zillionaire.Question;
 import com.inhysterics.zillionaire.QuestionSet;
 

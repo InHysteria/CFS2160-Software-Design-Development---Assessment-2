@@ -7,8 +7,6 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashSet;
 
 import javax.swing.DefaultListCellRenderer;
@@ -22,10 +20,10 @@ import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 
 import com.inhysterics.zillionaire.GameService;
-import com.inhysterics.zillionaire.GameState;
 import com.inhysterics.zillionaire.PlayerState;
 import com.inhysterics.zillionaire.Zillionaire;
 
+@SuppressWarnings("serial")
 public class FinalScoreInterface extends JPanel
 {
 	protected JLabel captionLabel;
@@ -62,6 +60,7 @@ public class FinalScoreInterface extends JPanel
 		});
 		playerList.setCellRenderer(new DefaultListCellRenderer() {
 
+			@SuppressWarnings("rawtypes")
 			@Override
 		    public Component getListCellRendererComponent(
 		            JList list,

@@ -1,29 +1,20 @@
 package com.inhysterics.zillionaire.ui;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Container;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Image;
 import java.awt.Insets;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import com.inhysterics.zillionaire.Category;
 import com.inhysterics.zillionaire.GameService;
 import com.inhysterics.zillionaire.PlayerState;
 import com.inhysterics.zillionaire.Question;
@@ -31,6 +22,7 @@ import com.inhysterics.zillionaire.SelectionHandler;
 import com.inhysterics.zillionaire.Zillionaire;
 
 
+@SuppressWarnings("serial")
 public class QuestionInterface extends JPanel 
 {
 
@@ -57,7 +49,6 @@ public class QuestionInterface extends JPanel
 
 	protected SelectionHandler<Integer> selectionHandler;
 	
-	protected static final Image backgroundImage = Toolkit.getDefaultToolkit().createImage("res/question_large.jpg");
 	
 	public QuestionInterface()
 	{
@@ -177,7 +168,7 @@ public class QuestionInterface extends JPanel
 		askTheAudianceContainer.setLayout(new BorderLayout());
 		askTheAudianceContainer.add(askTheAudiance, BorderLayout.EAST);
 		
-		ImageIcon imageIcon = new ImageIcon("res/question_large.jpg");
+		ImageIcon imageIcon = new ImageIcon(Zillionaire.IMG_QUESTION_LARGE);
 		JLabel imageLabel = new JLabel("",JLabel.CENTER);
 		imageLabel.setIcon(imageIcon);
 		askTheAudianceContainer.add(imageLabel, BorderLayout.CENTER);

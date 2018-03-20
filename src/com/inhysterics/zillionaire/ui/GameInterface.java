@@ -1,14 +1,8 @@
 package com.inhysterics.zillionaire.ui;
 
-import java.awt.BorderLayout;
 import java.awt.CardLayout;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -16,7 +10,6 @@ import javax.swing.JPanel;
 
 import com.inhysterics.zillionaire.Category;
 import com.inhysterics.zillionaire.GameService;
-import com.inhysterics.zillionaire.GameState;
 import com.inhysterics.zillionaire.PlayerState;
 import com.inhysterics.zillionaire.Question;
 import com.inhysterics.zillionaire.QuestionSet;
@@ -39,6 +32,7 @@ TODO: FinalScoreInterface
 
  */
 
+@SuppressWarnings("serial")
 public class GameInterface extends JFrame
 {
 	protected CardLayout manager;

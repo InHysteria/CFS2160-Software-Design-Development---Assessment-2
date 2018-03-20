@@ -21,7 +21,9 @@ import javax.swing.ListSelectionModel;
 
 import com.inhysterics.zillionaire.PlayerState;
 import com.inhysterics.zillionaire.SelectionHandler;
+import com.inhysterics.zillionaire.Zillionaire;
 
+@SuppressWarnings("serial")
 public class ConfigInterface extends JPanel
 {	
 	protected ImageIcon logoImageIcon;	
@@ -42,12 +44,11 @@ public class ConfigInterface extends JPanel
 		InitializeComponent();		
 	}
 	
-	@SuppressWarnings("serial")
 	protected void InitializeComponent()
 	{
 		this.setLayout(new GridBagLayout());
 
-		logoImageIcon = new ImageIcon("res/logo_large.png");
+		logoImageIcon = new ImageIcon(Zillionaire.IMG_LOGO_LARGE);
 		logoLabel = new JLabel("",JLabel.CENTER);
 		logoLabel.setIcon(logoImageIcon);
 		

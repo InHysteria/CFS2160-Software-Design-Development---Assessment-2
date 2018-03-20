@@ -1,10 +1,8 @@
 package com.inhysterics.zillionaire;
 
 import java.awt.Dimension;
-import java.io.File;
-import java.io.FilenameFilter;
+import java.net.URL;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Currency;
 import java.util.Locale;
 
@@ -15,6 +13,11 @@ import com.inhysterics.zillionaire.ui.GameInterface;
 
 public class Zillionaire implements Runnable 
 {
+
+	public static final URL IMG_LOGO_LARGE = Zillionaire.class.getResource("/res/logo_large.png");
+	public static final URL IMG_LOGO_SMALL = Zillionaire.class.getResource("/res/logo_small.png");
+	public static final URL IMG_LOGO_SVG = Zillionaire.class.getResource("/res/logo.svg");
+	public static final URL IMG_QUESTION_LARGE = Zillionaire.class.getResource("/res/question_large.jpg");
 	
 	public static String CurrencySymbol = Currency.getInstance(Locale.UK).getSymbol();
 	

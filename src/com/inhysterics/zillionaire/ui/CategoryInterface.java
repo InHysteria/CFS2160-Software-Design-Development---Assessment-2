@@ -1,6 +1,5 @@
 package com.inhysterics.zillionaire.ui;
 
-import java.awt.Container;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -9,7 +8,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
@@ -22,6 +20,7 @@ import com.inhysterics.zillionaire.PlayerState;
 import com.inhysterics.zillionaire.SelectionHandler;
 import com.inhysterics.zillionaire.Zillionaire;
 
+@SuppressWarnings("serial")
 public class CategoryInterface extends JPanel {
 
 	protected JLabel playerNameLabel;

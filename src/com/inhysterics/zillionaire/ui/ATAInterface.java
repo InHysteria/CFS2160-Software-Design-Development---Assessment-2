@@ -8,14 +8,13 @@ import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Stroke;
-import java.awt.geom.AffineTransform;
 import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.geom.RoundRectangle2D;
-import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 public class ATAInterface extends JPanel
 {		
 	public float[] percents = new float[] { 0.25f, 0.5f, 0.15f, 0.10f };

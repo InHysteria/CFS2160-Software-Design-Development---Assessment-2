@@ -31,7 +31,7 @@ import org.xml.sax.InputSource;
 
 public class QuestionSetService 
 {
-	private static final String QUESTION_SET_MANFIFEST = "question_manifest.xml";
+	private static final String _QUESTION_SET_MANFIFEST = "question_manifest.xml";
 	public static final String QUESTION_SET_LOCAL_PATH = "./questionsets/";
 	public static final String QUESTION_SET_ONLINE_PATH = "https://raw.githubusercontent.com/InHysteria/CFS2160-Software-Design-Development---Assessment-2/master/";
 	
@@ -63,7 +63,7 @@ public class QuestionSetService
 		try 
 		{		
 			int i;
-			String manifestSource = pullFromGit(QUESTION_SET_MANFIFEST);
+			String manifestSource = pullFromGit(_QUESTION_SET_MANFIFEST);
 			
 			InputSource is = new InputSource();
 			is.setCharacterStream(new StringReader(manifestSource));
@@ -168,7 +168,7 @@ public class QuestionSetService
 	
 	public static void generateLocalQuestionManifest()
 	{
-		File outputFile = new File("./" + QUESTION_SET_MANFIFEST);
+		File outputFile = new File("./" + _QUESTION_SET_MANFIFEST);
 		if (outputFile.exists())
 			outputFile.delete();
 

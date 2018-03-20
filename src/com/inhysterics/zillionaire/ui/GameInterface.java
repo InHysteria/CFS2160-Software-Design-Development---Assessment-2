@@ -7,6 +7,8 @@ import java.awt.Container;
 import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -51,7 +53,6 @@ public class GameInterface extends JFrame
 	public GameInterface()
 	{
 		super("Who Wants To Be A Zillionaire!");
-
 		
 		InitializeComponent();
 		Initialize();
@@ -171,7 +172,7 @@ public class GameInterface extends JFrame
 				configInterface.clear();
 			}			
 		});
-
+		
 		wrapper.add(configInterface, configInterface.getClass().getName());
 		wrapper.add(questionSetInterface, questionSetInterface.getClass().getName());
 		wrapper.add(playerInterface, playerInterface.getClass().getName());

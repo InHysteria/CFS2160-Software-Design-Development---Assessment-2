@@ -13,6 +13,7 @@ public class GameState {
 	
 	protected PlayerState[] players;	
 	protected HashMap<Category, ArrayList<Question>> questions;
+	protected int countOfUniqueQuestions;
 	protected HashSet<String> usedquestions = new HashSet<String>();
 	
 	protected Question lastQuestion;	

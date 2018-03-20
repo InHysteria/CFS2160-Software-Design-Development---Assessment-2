@@ -1,14 +1,23 @@
 package com.inhysterics.zillionaire.ui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Image;
 import java.awt.Insets;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.concurrent.ThreadLocalRandom;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -20,6 +29,7 @@ import com.inhysterics.zillionaire.PlayerState;
 import com.inhysterics.zillionaire.Question;
 import com.inhysterics.zillionaire.SelectionHandler;
 import com.inhysterics.zillionaire.Zillionaire;
+
 
 public class QuestionInterface extends JPanel 
 {
@@ -39,14 +49,21 @@ public class QuestionInterface extends JPanel
 	protected JPanel askTheAudianceContainer;
 	
 	protected JButton leaveButton;
+	
+	protected ArrayList<Integer> answerRandomisationMapping = new ArrayList<Integer>();
 		
 	protected Question question;
 	protected PlayerState player;
 
 	protected SelectionHandler<Integer> selectionHandler;
 	
+	protected static final Image backgroundImage = Toolkit.getDefaultToolkit().createImage("res/question_large.jpg");
+	
 	public QuestionInterface()
 	{
+		for (int i = 0; i < 4; i++)
+			answerRandomisationMapping.add(i);
+		
 		InitializeComponent();
 	}
 		
@@ -60,9 +77,16 @@ public class QuestionInterface extends JPanel
 			public void actionPerformed(ActionEvent e) 
 			{
 				if (selectionHandler != null)
-					selectionHandler.OnSelectionMade(Integer.parseInt(e.getActionCommand()));
+				{
+					int answer = Integer.parseInt(e.getActionCommand());					
+					if (answer < 0)
+						selectionHandler.OnSelectionMade(answer);
+					else
+						selectionHandler.OnSelectionMade(answerRandomisationMapping.get(answer));
+				}
 			}			
 		};
+		
 
 		playerNameLabel = new JLabel("$playerNameLabel", JLabel.CENTER);
 		playerScoreLabel = new JLabel("$playerScoreLabel", JLabel.CENTER);
@@ -153,6 +177,11 @@ public class QuestionInterface extends JPanel
 		askTheAudianceContainer = new JPanel();
 		askTheAudianceContainer.setLayout(new BorderLayout());
 		askTheAudianceContainer.add(askTheAudiance, BorderLayout.EAST);
+		
+		ImageIcon imageIcon = new ImageIcon("res/question_large.jpg");
+		JLabel imageLabel = new JLabel("",JLabel.CENTER);
+		imageLabel.setIcon(imageIcon);
+		askTheAudianceContainer.add(imageLabel, BorderLayout.CENTER);
 		
 		
 		leaveButton = new JButton("Take $playerScoreLabel and leave..");
@@ -277,16 +306,19 @@ public class QuestionInterface extends JPanel
 		this.question = question;
 		
 		questionLabel.setText(question.getMessage());
-		
+
+	
+			
 		String[] answers = question.getAnswers();
+		Collections.shuffle(answerRandomisationMapping);
 		
-		answerAButton.setText("A: " + answers[0]);
+		answerAButton.setText("A: " + answers[answerRandomisationMapping.get(0)]);
 		answerAButton.setEnabled(true);
-		answerBButton.setText("B: " + answers[1]);
+		answerBButton.setText("B: " + answers[answerRandomisationMapping.get(1)]);
 		answerBButton.setEnabled(true);
-		answerCButton.setText("C: " + answers[2]);
+		answerCButton.setText("C: " + answers[answerRandomisationMapping.get(2)]);
 		answerCButton.setEnabled(true);
-		answerDButton.setText("D: " + answers[3]);
+		answerDButton.setText("D: " + answers[answerRandomisationMapping.get(3)]);
 		answerDButton.setEnabled(true);
 		
 		askTheAudiance.setVisible(false);

@@ -50,7 +50,24 @@ public final class GameService
 	{
 		currentGame.players = players;
 	}
+
+	private static final int[] checkpoints = new int[] { 0, 4, 12, 16 };
+	public static int getScoreForQuestion(int questionNo)
+	{
+		if (questionNo < 4)
+			return questionNo * 100;
+		else if (questionNo < 12)
+			return 500*(int)(Math.pow(2,questionNo-4));
+		else if (questionNo < 16)
+			return 125000*(int)(Math.pow(2,questionNo-12));
+		else
+			return 1000000;
+	}
 	
+	public static int[] getCheckpoints()
+	{
+		return checkpoints;
+	}
 	
 	/**
 	 * Question Related
@@ -59,7 +76,7 @@ public final class GameService
 	{
 		HashSet<Integer> avoid = new HashSet<Integer>();
 		Category[] choices = currentGame.questions.keySet().toArray(new Category[0]);
-		Category[] out = new Category[count];
+		Category[] out = new Category[Math.min(count, choices.length)];
 		int i = 0;
 		while (i < Math.min(count, choices.length))
 		{
@@ -78,6 +95,7 @@ public final class GameService
 	{
 		ArrayList<Question> categorychoices = currentGame.questions.get(key);
 		ArrayList<Question> choices = new ArrayList<Question>();
+				
 		for (Question question : categorychoices)
 			if (question.minstage <= getCurrentPlayer().questionNo 
 								  && getCurrentPlayer().questionNo <= question.maxstage)
@@ -103,16 +121,22 @@ public final class GameService
 		currentGame.usedquestions.add(choice.id);
 		return (currentGame.lastQuestion = choice);
 	}
+	
 	public static Question getLastQuestion()
 	{
 		return currentGame.lastQuestion;
 	}
+	
 	public static String getLastQuestionAnswerString()
 	{
 		return currentGame.lastQuestion.answers[currentGame.lastQuestion.correctAnswer];
 	}
 	
-	private static final int[] checkpoints = new int[] { 0, 4, 12, 16 };
+	public static int getNoOfUniqueQuestions()
+	{
+		return currentGame.countOfUniqueQuestions;
+	}
+	
 	public static Boolean[] answerLastQuestion(Integer choice)
 	{
 		PlayerState currentPlayer = getCurrentPlayer();
@@ -135,13 +159,13 @@ public final class GameService
 		}
 	}
 	
-	
 	private static final float[] getQuestionAskTheAudianceCorrectTuning = new float[] {
 		1.15f,1.15f,1.15f,1.15f,
 		1f,1f,1f,1f,1f,1f,1f,
 		0.75f,0.75f,0.75f,0.75f,
 		0.5f
 	};
+	
 	public static float[] getQuestionAskTheAudiance()
 	{
 		ThreadLocalRandom random = ThreadLocalRandom.current();
@@ -161,7 +185,8 @@ public final class GameService
 	}	
 	
 	public static void setQuestions(QuestionSet[] sets) 
-	{
+	{		
+		HashSet<String> uniqueQuestionGUIDs = new HashSet<String>();
 		currentGame.questions = new HashMap<Category, ArrayList<Question>>();
 		for (QuestionSet set : sets)
 		{
@@ -175,10 +200,12 @@ public final class GameService
 					Category key = categories.get(categoryID);
 					if (!currentGame.questions.containsKey(key))
 						currentGame.questions.put(key, new ArrayList<Question>());
-					
+										
 					currentGame.questions.get(key).add(question);
+					uniqueQuestionGUIDs.add(question.id);
 				}
 			}				
 		}
+		currentGame.countOfUniqueQuestions = uniqueQuestionGUIDs.size();
 	}
 }

@@ -52,14 +52,7 @@ public class PlayerState implements Comparable<PlayerState>
 
 	public int getScore()
 	{
-		if (questionNo < 4)
-			return questionNo * 100;
-		else if (questionNo < 12)
-			return 500*(int)(Math.pow(2,questionNo-4));
-		else if (questionNo < 16)
-			return 125000*(int)(Math.pow(2,questionNo-12));
-		else
-			return 1000000;
+		return GameService.getScoreForQuestion(questionNo);
 	}
 
 	

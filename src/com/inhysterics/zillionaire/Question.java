@@ -40,6 +40,11 @@ public class Question {
 		this.maxstage = maxstage;
 	}
 	
+	public String getID()
+	{
+		return id;
+	}
+
 	public String getMessage() {
 		return body;
 	}

@@ -19,6 +19,7 @@ import javax.swing.JPanel;
 public class ATAInterface extends JPanel
 {		
 	public float[] percents = new float[] { 0.25f, 0.5f, 0.15f, 0.10f };
+	public int[] displays = new int[] { 25,25,25,25 };
 	
 	public ATAInterface()
 	{
@@ -81,7 +82,7 @@ public class ATAInterface extends JPanel
 		g.setFont(slightlyLessBoldFont);
 		for (int i = 0; i < 4; i++)
 			g.drawString(
-				((int)(percents[i]*100)) + "%", 
+				displays[i] + "%", 
 				(((width-20)/4) * (i+0.5f)) - 8, 
 				30);
 		
@@ -116,6 +117,15 @@ public class ATAInterface extends JPanel
 	public void setPrecents(float[] percents)
 	{
 		this.percents = percents;
+
+		displays[0] = 100; //Ensures that the values always add to 100 despite dropping precision.
+		for (int i = 1; i < percents.length; i++)
+		{
+			displays[i] = (int)(percents[i]*100);
+			displays[0] -= displays[i];
+		}
+		
+		
 		repaint();
 	}
 }

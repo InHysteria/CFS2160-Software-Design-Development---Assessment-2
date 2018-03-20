@@ -1,13 +1,17 @@
 package com.inhysterics.zillionaire.ui;
 
+import java.awt.Component;
 import java.awt.Container;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionListener;
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashSet;
 
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.DefaultListModel;
@@ -18,18 +22,20 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.ListCellRenderer;
 import javax.swing.ListSelectionModel;
 
 import com.inhysterics.zillionaire.GameService;
 import com.inhysterics.zillionaire.GameState;
 import com.inhysterics.zillionaire.PlayerState;
+import com.inhysterics.zillionaire.Zillionaire;
 
 public class PlayerInterface extends JPanel {
 
 	protected JLabel captionLabel;
 	protected JLabel instructionLabel;
-	protected DefaultListModel<PlayerState> playerListModel;
-	protected JList<PlayerState> playerList;
+	protected DefaultListModel<String> playerListModel;
+	protected JList<String> playerList;
 	protected JScrollPane playerListScroller;
 	protected JButton selectButton;
 	
@@ -48,14 +54,10 @@ public class PlayerInterface extends JPanel {
 		captionLabel = new JLabel("Current scores are..", JLabel.CENTER);	
 		instructionLabel = new JLabel("The next player in the rotation is %s", JLabel.CENTER);
 
-		playerListModel = new DefaultListModel<PlayerState>();
-		playerList = new JList<PlayerState>(playerListModel);
+		playerListModel = new DefaultListModel<String>();
+		playerList = new JList<String>(playerListModel);
 		playerList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		playerList.setLayoutOrientation(JList.VERTICAL);
-
-		DefaultListCellRenderer renderer = (DefaultListCellRenderer)playerList.getCellRenderer();
-		renderer.setHorizontalAlignment(JLabel.CENTER);
-		
 		playerList.setSelectionModel(new DefaultListSelectionModel()
 		{
 		    @Override
@@ -63,11 +65,28 @@ public class PlayerInterface extends JPanel {
 		        super.setSelectionInterval(-1, -1);
 		    }
 		});
+		playerList.setCellRenderer(new DefaultListCellRenderer() {
+
+			@Override
+		    public Component getListCellRendererComponent(
+		            JList list,
+		            Object value,
+		            int index,
+		            boolean isSelected,
+		            boolean cellHasFocus)
+		    {
+		        JLabel label = (JLabel)super.getListCellRendererComponent(list,value,index,isSelected,cellHasFocus);
+	            Font font = new Font(Font.MONOSPACED, Font.PLAIN, 14);
+	            label.setHorizontalAlignment(CENTER);
+	            label.setFont(font);
+	            return label;				
+		    }
+		});
 		
 		playerListScroller = new JScrollPane(playerList);
 		playerListScroller.setAlignmentX(JScrollPane.LEFT_ALIGNMENT);
 		playerListScroller.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		
+				
 		selectButton = new JButton("%s is ready");
 		
 		int yRow = 0;
@@ -113,13 +132,41 @@ public class PlayerInterface extends JPanel {
 		PlayerState nextPlayer = GameService.getCurrentPlayer();
 		instructionLabel.setText(String.format("The next player in the rotation is %s", nextPlayer.getName()));
 		selectButton.setText(String.format("%s is ready", nextPlayer.getName()));
-		playerListModel.clear();		
-		
+
+		playerListModel.clear();
 		PlayerState[] players = GameService.getPlayers();
-		Arrays.sort(players, Collections.reverseOrder());
-		for (PlayerState player : players)
-			playerListModel.addElement(player);
+		HashSet<Integer> checkpoints = new HashSet<Integer>();
+		for (int checkpoint : GameService.getCheckpoints())
+			checkpoints.add(checkpoint);
 		
+
+		String[] playerNames = new String[players.length];
+		for (int i = 0; i < players.length; i++)
+			playerNames[i] = players[i].getName();
+		
+		int max = 16;
+		int padding_left = (Integer.toString(GameService.getScoreForQuestion(max-1))).length();
+		int padding_right = String.join(", ", playerNames).length();
+		
+		
+		
+		for (int i = max-1; i >= 0; i--)
+		{
+			ArrayList<String> playersAtI = new ArrayList<String>();
+			for (PlayerState player : players)
+				if (player.getQuestionNo() == i)
+					playersAtI.add(player.getName());
+			
+			playerListModel.addElement(String.format(
+				"%s%s%s: %4$-"+padding_right+"s",
+				new String(new char[padding_left-(Integer.toString(GameService.getScoreForQuestion(i))).length()]).replace('\0', ' '),
+				Zillionaire.CurrencySymbol,
+				GameService.getScoreForQuestion(i),
+				String.join(", ", playersAtI)
+			));
+			if (checkpoints.contains(i))
+				playerListModel.addElement(" ");
+		}
 	}
 	
 	public void setSelectionHandler(ActionListener selectionHandler)

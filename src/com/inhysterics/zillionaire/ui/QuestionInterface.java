@@ -120,8 +120,7 @@ public class QuestionInterface extends JPanel
 					while (hidden < 2)
 					{
 						int considering = ThreadLocalRandom.current().nextInt(0, 4);
-						System.out.println("Hidden: " + hidden + ", Considering: " + considering);
-						if (considering == question.getCorrectAnswer())
+						if (answerRandomisationMapping.get(considering) == question.getCorrectAnswer())
 							continue;
 						
 						switch (considering)
@@ -311,7 +310,7 @@ public class QuestionInterface extends JPanel
 		_resetAskTheAudiance();			
 		
 		questionLabel.setText(question.getMessage());
-		
+
 		answerAButton.setText("A: " + answers[answerRandomisationMapping.get(0)]);
 		answerAButton.setEnabled(true);
 		answerBButton.setText("B: " + answers[answerRandomisationMapping.get(1)]);

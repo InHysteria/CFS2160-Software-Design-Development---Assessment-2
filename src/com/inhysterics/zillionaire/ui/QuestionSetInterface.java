@@ -75,11 +75,17 @@ public class QuestionSetInterface extends JPanel
 				int question_count = 0;
 				for (QuestionSet set : sets)
 					question_count += set.getQuestions().length;
+				
+				if (question_count == 0)
+				{
+					JOptionPane.showMessageDialog(null, "You must select at least one question set.");
+					return;
+				}
 						
 				if (JOptionPane.showConfirmDialog(
 						null, 
-						"Play with selected question sets?", 
 						"You have selected " + sets.length + " for a total of " + question_count + " questions.\r\n\r\nDo you want to play with these questions?", 
+						"Play with selected question sets?", 
 						JOptionPane.YES_NO_OPTION, 
 						JOptionPane.QUESTION_MESSAGE)
 						

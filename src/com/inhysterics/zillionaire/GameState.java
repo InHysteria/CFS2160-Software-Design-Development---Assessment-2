@@ -3,11 +3,6 @@ package com.inhysterics.zillionaire;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Random;
-import java.util.Set;
-import java.util.concurrent.ThreadLocalRandom;
-
-import javax.swing.JOptionPane;
 
 public class GameState {
 	

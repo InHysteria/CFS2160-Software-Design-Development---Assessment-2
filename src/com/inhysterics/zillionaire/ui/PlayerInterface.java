@@ -23,6 +23,9 @@ import com.inhysterics.zillionaire.GameService;
 import com.inhysterics.zillionaire.PlayerState;
 import com.inhysterics.zillionaire.Zillionaire;
 
+/**
+ * An interface used to show the scores of all players and to notify that it is a new players turn.
+ */
 @SuppressWarnings("serial")
 public class PlayerInterface extends JPanel {
 

@@ -20,6 +20,9 @@ import com.inhysterics.zillionaire.PlayerState;
 import com.inhysterics.zillionaire.SelectionHandler;
 import com.inhysterics.zillionaire.Zillionaire;
 
+/**
+ * An interface used to select a category from a list of options.
+ */
 @SuppressWarnings("serial")
 public class CategoryInterface extends JPanel {
 

@@ -16,22 +16,10 @@ import com.inhysterics.zillionaire.QuestionSet;
 import com.inhysterics.zillionaire.SelectionHandler;
 import com.inhysterics.zillionaire.Zillionaire;
 
-/*
 
-FIRST_PASS: ConfigInterface
-	V
-FIRST_PASS: QuestionSetInterface
-	V
-FIRST_PASS: PlayerInterface <-------+
-	V								|
-FIRST_PASS: CategoryInterface		|
-	V								|
-FIRST_PASS: QuestionInterface ------+
-	V
-TODO: FinalScoreInterface
-
+/**
+ * The main interface which loads all others and manages interactions between them and the services of the game.
  */
-
 @SuppressWarnings("serial")
 public class GameInterface extends JFrame
 {

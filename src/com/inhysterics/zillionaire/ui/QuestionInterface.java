@@ -22,6 +22,9 @@ import com.inhysterics.zillionaire.SelectionHandler;
 import com.inhysterics.zillionaire.Zillionaire;
 
 
+/**
+ * An interface used to allow a player to answer a question, with additional lifelines for assistance.
+ */
 @SuppressWarnings("serial")
 public class QuestionInterface extends JPanel 
 {

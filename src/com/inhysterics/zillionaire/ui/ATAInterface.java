@@ -14,6 +14,9 @@ import java.awt.geom.RoundRectangle2D;
 
 import javax.swing.JPanel;
 
+/**
+ * An ask the audience interface. Displays percentiles as percentages with matching bars.
+ */
 @SuppressWarnings("serial")
 public class ATAInterface extends JPanel
 {		

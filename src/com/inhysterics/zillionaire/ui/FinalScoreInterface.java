@@ -23,6 +23,9 @@ import com.inhysterics.zillionaire.GameService;
 import com.inhysterics.zillionaire.PlayerState;
 import com.inhysterics.zillionaire.Zillionaire;
 
+/**
+ * An interface used to show the final scores of all players.
+ */
 @SuppressWarnings("serial")
 public class FinalScoreInterface extends JPanel
 {

@@ -12,21 +12,52 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+/**
+ * Represents a set of questions and categories.
+ * 
+ * @see Question
+ * @see Category
+ */
 public class QuestionSet {
 
+	/**
+	 * User friendly name of this question set.
+	 */
 	protected String name;
-	protected String version;
-	protected String author;
-	protected String description;
-	protected String filename;
-	
-	protected HashMap<Integer, Category> categories;
-	protected Question[] questions;
-	
-	public QuestionSet() {
-		
-	}
 
+	/**
+	 * Version number of this question set. Usually incremented every time a change happens to a question set so that people know to update.
+	 */ 
+	protected String version;
+
+	/**
+	 * The name of the author of this question set.
+	 */
+	protected String author;
+
+	/**
+	 * A description of this question set.
+	 */
+	protected String description;
+
+	/**
+	 * The local filename of this question set.
+	 */
+	protected String filename;
+
+	/**
+	 * A dictionary of the categories inside this question set.
+	 */
+	protected HashMap<Integer, Category> categories;
+
+	/**
+	 * An array of questions in this question set.
+	 */
+	protected Question[] questions;	
+
+	/**
+	 * Formats the data inside the question set for display inside a JLabel.
+	 */
 	@Override
 	public String toString()
 	{
@@ -37,46 +68,81 @@ public class QuestionSet {
 				author,
 				description);  
 	}
-	
 
+	/**
+	 * Getter for the name field.
+	 * 
+	 * @returns The name of this category.
+	 */
 	public String getName() 
 	{
 		return name;
 	}
 
+	/**
+	 * Getter for the version field.
+	 * 
+	 * @returns The version of this category.
+	 */
 	public String getVersion() 
 	{
 		return version;
 	}
 
+	/**
+	 * Getter for the author field.
+	 * 
+	 * @returns The author of this category.
+	 */
 	public String getAuthor() 
 	{
 		return author;
 	}
 
+	/**
+	 * Getter for the filename field.
+	 * 
+	 * @returns The filename of this category.
+	 */
 	public String getFilename() 
 	{
 		return filename;
 	}
 
+	/**
+	 * Getter for the description field.
+	 * 
+	 * @returns The description of this category.
+	 */
 	public String getDescription() 
 	{
 		return description;
 	}
 
+	/**
+	 * Getter for the categories field.
+	 * 
+	 * @returns The categories of this category.
+	 */
 	public HashMap<Integer, Category> getCategories() 
 	{
 		return categories;
 	}
 
+	/**
+	 * Getter for the questions field.
+	 * 
+	 * @returns The questions of this category.
+	 */
 	public Question[] getQuestions() {
 		return questions;
 	}
 
-
-
-	//Still working out quite how I want these classes to be created, but in the interests of speed I'm going to do this..
-	//Probably isn't correct but I've seen java classes doing this before.
+	/**
+	 * Utility class for creating questionsets from XML.
+	 * 
+	 * @see QuestionSet
+	 */
 	public static class Builder 
 	{
 
@@ -84,6 +150,8 @@ public class QuestionSet {
 		<QuestionSet>
 			[<Name>..</Name>]
 			[<Version>..</Version>]
+			[<Author>..</Author>]
+			[<Description>..</Description>]
 			<Categories>
 				...	
 			</Categories>
@@ -92,6 +160,12 @@ public class QuestionSet {
 			</Questions>
 		</QuestionSet>
 		*/
+		/**
+		 * Loads and parses an XML file and attempts to read question set data from it.
+		 * 
+		 * @param filepath A local filepath to an XML file.
+		 * @param errors An array list to log any XML errors to.
+		 */
 		public static QuestionSet CreateQuestionSet(String filepath, ArrayList<Exception> errors) {
 			QuestionSet questionset = new QuestionSet();
 
@@ -103,7 +177,7 @@ public class QuestionSet {
 				Document dom = builder.parse(filepath);
 				Element rootElement = dom.getDocumentElement();
 
-				NodeList nameList = rootElement.getElementsByTagName("Name"); //TODO: Demagicify these strings
+				NodeList nameList = rootElement.getElementsByTagName("Name"); 
 				NodeList versionList = rootElement.getElementsByTagName("Version");
 				NodeList authorList = rootElement.getElementsByTagName("Author");
 				NodeList descriptionList = rootElement.getElementsByTagName("Description");

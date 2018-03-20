@@ -20,6 +20,9 @@ import com.inhysterics.zillionaire.QuestionSetRemote;
 import com.inhysterics.zillionaire.QuestionSetService;
 import com.inhysterics.zillionaire.SelectionHandler;
 
+/**
+ * An interface used to select question sets and also download new question sets.
+ */
 @SuppressWarnings("serial")
 public class QuestionSetInterface extends JPanel
 {

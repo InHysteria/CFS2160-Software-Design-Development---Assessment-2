@@ -25,12 +25,31 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
+/**
+ * Manages question set discovery.
+ */
 public class QuestionSetService 
 {
+	/**
+	 * The name of the manifest file to look for when discovering questionsets on the remote server.
+	 */
 	private static final String _QUESTION_SET_MANFIFEST = "question_manifest.xml";
+	
+	/**
+	 * The file path to use for local questionsets.
+	 */
 	public static final String QUESTION_SET_LOCAL_PATH = "./questionsets/";
+	
+	/**
+	 * The address of the remote server.
+	 */
 	public static final String QUESTION_SET_ONLINE_PATH = "https://raw.githubusercontent.com/InHysteria/CFS2160-Software-Design-Development---Assessment-2/master/";
 	
+	/**
+	 * Gets a list of all question sets that exist locally.
+	 * 
+	 * @return A list of all question sets that exist locally.
+	 */
 	public static QuestionSet[] getLocalQuestionSets()
 	{
 		File directory = new File(QUESTION_SET_LOCAL_PATH);
@@ -54,6 +73,12 @@ public class QuestionSetService
 		
 		return sets;
 	}
+	
+	/**
+	 * Gets a list of all questions sets that exist remotely.
+	 * 
+	 * @return A list of all question sets that exist remotely.
+	 */
 	public static QuestionSetRemote[] getRemoteQuestionSets()
 	{		
 		try 
@@ -68,7 +93,7 @@ public class QuestionSetService
 			Document dom = builder.parse(is);
 			Element rootElement = dom.getDocumentElement();
 			
-			NodeList remoteQuestionsList = rootElement.getElementsByTagName("QuestionSetRemote"); //TODO: Demagicify these strings
+			NodeList remoteQuestionsList = rootElement.getElementsByTagName("QuestionSetRemote");
 			QuestionSetRemote[] remoteQuestions = new QuestionSetRemote[remoteQuestionsList.getLength()];
 			for (i = 0; i < remoteQuestionsList.getLength(); i++)
 			{
@@ -99,7 +124,11 @@ public class QuestionSetService
 		}
 	}
 	
-	
+	/**
+	 * Downloads a file from the remote server.
+	 * 
+	 * @return The content of the file from the remote server.
+	 */
 	public static String pullFromGit(String gitpath)
 	{
 		//Code courtesy of https://stackoverflow.com/questions/1359689/how-to-send-http-request-in-java#1359700
@@ -143,6 +172,12 @@ public class QuestionSetService
 			}
 		}
 	}
+
+	/**
+	 * Downloads a file from the remote server, then writes it to the local filesystem.
+	 * 
+	 * @return The content of the file from the remote server.
+	 */
 	public static String pullFromGit(String gitpath, String localpath)
 	{
 		File directory = new File(QUESTION_SET_LOCAL_PATH);
@@ -162,6 +197,9 @@ public class QuestionSetService
 		return data;
 	}
 	
+	/**
+	 * Generates a manifest of questionsets that exist locally for upload to the remote server.
+	 */
 	public static void generateLocalQuestionManifest()
 	{
 		File outputFile = new File("./" + _QUESTION_SET_MANFIFEST);

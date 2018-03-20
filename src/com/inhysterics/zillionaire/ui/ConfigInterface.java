@@ -23,6 +23,9 @@ import com.inhysterics.zillionaire.PlayerState;
 import com.inhysterics.zillionaire.SelectionHandler;
 import com.inhysterics.zillionaire.Zillionaire;
 
+/**
+ * An interface used to provide a list of players and also welcome the players to the game.
+ */
 @SuppressWarnings("serial")
 public class ConfigInterface extends JPanel
 {	

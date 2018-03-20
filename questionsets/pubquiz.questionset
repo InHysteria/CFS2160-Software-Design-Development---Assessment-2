@@ -1,0 +1,300 @@
+<QuestionSet>
+	<Name>Pub Quiz</Name>
+	<Version>0.0.1</Version>
+	<Author>http://www.freepubquiz.co.uk (With incorrect answers by Gemma Mallinson)</Author>
+	<Description>A set of general knowledge questions provided by http://www.freepubquiz.co.uk.</Description>
+	<Categories>
+		<CategoryDefinition id="0">General Knowledge</CategoryDefinition>
+	</Categories>
+	<Questions><Question>
+​			<Category>0</Category>			
+​			<MinStage>0</MinStage>			
+​			<MaxStage>16</MaxStage>			
+​			<Body>Who wrote the 2017 book What Happened?</Body>
+​			<Answer correct="">Hillary Clinton</Answer>
+​			<Answer>Angie Thomas</Answer>
+​			<Answer>Victoria Aveyard</Answer>
+​			<Answer>Karen M. McManus</Answer>
+​		</Question> ​
+​		<Question>
+​			<Category>0</Category>			
+​			<MinStage>0</MinStage>			
+​			<MaxStage>16</MaxStage>			
+​			<Body>Which country declared itself independent from Russia following the 1917 Russian Revolution?</Body>
+​			<Answer correct="">Finland</Answer>
+​			<Answer>Norway</Answer>
+​			<Answer>Ukraine</Answer>
+​			<Answer>Poland</Answer>
+​		</Question> ​
+​		<Question>
+​			<Category>0</Category>			
+​			<MinStage>0</MinStage>			
+​			<MaxStage>16</MaxStage>			
+​			<Body>Actor Glynn Edwards, who is best known for his role as Dave 'the barman' in the ITV drama Minder, was married to which well-known British actress?</Body>
+​			<Answer correct="">Yootha Joyce</Answer>
+​			<Answer>Hayley Atwell</Answer>
+​			<Answer>Eve Best</Answer>
+​			<Answer>Kathy Burke</Answer>
+​		</Question> ​
+​		<Question>
+​			<Category>0</Category>			
+​			<MinStage>0</MinStage>			
+​			<MaxStage>16</MaxStage>			
+​			<Body>Which planet in the Solar System has the most moons?</Body>
+​			<Answer correct="">Jupiter</Answer>
+​			<Answer>Earth</Answer>
+​			<Answer>Pluto</Answer>
+​			<Answer>Saturn</Answer>
+​		</Question> ​
+​		<Question>
+​			<Category>0</Category>			
+​			<MinStage>0</MinStage>			
+​			<MaxStage>16</MaxStage>			
+​			<Body>Which large town is home to the Halliwell Jones Stadium and the first IKEA store ever built in the UK?</Body>
+​			<Answer correct="">Warrington</Answer>
+​			<Answer></Answer>
+​			<Answer></Answer>
+​			<Answer></Answer>
+​		</Question> ​
+​		<Question>
+​			<Category>0</Category>			
+​			<MinStage>0</MinStage>			
+​			<MaxStage>16</MaxStage>			
+​			<Body>Canadian-born American businesswoman Florence Nightingale Graham (1878-1966) went by which business name?</Body>
+​			<Answer correct="">Elizabeth Arden</Answer>
+​			<Answer>Joyce Toll</Answer>
+​			<Answer>Camilla Norman</Answer>
+​			<Answer>Florence Borthwell</Answer>
+​		</Question> ​
+​		<Question>
+​			<Category>0</Category>			
+​			<MinStage>0</MinStage>			
+​			<MaxStage>16</MaxStage>			
+​			<Body>What is the name of the largest inland city in New South Wales, Australia?</Body>
+​			<Answer correct="">Wagga Wagga</Answer>
+​			<Answer>Ungarra</Answer>
+​			<Answer>Snowtown</Answer>
+​			<Answer>Pinnaroo</Answer>
+​		</Question> ​
+​		<Question>
+​			<Category>0</Category>			
+​			<MinStage>0</MinStage>			
+​			<MaxStage>16</MaxStage>			
+​			<Body>The song Dueling Banjos was made famous by which 1972 film?</Body>
+​			<Answer correct="">Deliverance</Answer>
+​			<Answer>The Cowboys</Answer>
+​			<Answer>Pancho Villa</Answer>
+​			<Answer>Red Sun</Answer>
+​		</Question> ​
+​		<Question>
+​			<Category>0</Category>			
+​			<MinStage>0</MinStage>			
+​			<MaxStage>16</MaxStage>			
+​			<Body>Which area of Edinburgh, at the end of the Royal Mile, is the location of the Scottish Parliament?</Body>
+​			<Answer correct="">Holyrood</Answer>
+​			<Answer>Craigmillar</Answer>
+​			<Answer>Marchmont</Answer>
+​			<Answer>The Cowgate</Answer>
+​		</Question> ​
+​		<Question>
+​			<Category>0</Category>			
+​			<MinStage>0</MinStage>			
+​			<MaxStage>3</MaxStage>			
+​			<Body>Name the smallest British rodent?</Body>
+​			<Answer correct="">Harvest mouse</Answer>
+​			<Answer>Acquire squeaker</Answer>
+​			<Answer>Collect shrew</Answer>
+​			<Answer>Small McMouse</Answer>
+​		</Question> ​
+​		<Question>
+​			<Category>0</Category>			
+​			<MinStage>0</MinStage>			
+​			<MaxStage>16</MaxStage>			
+​			<Body>'Brains' is the name of a regional brewery founded in 1882 in which British city?</Body>
+​			<Answer correct="">Cardiff</Answer>
+​			<Answer>Manchester</Answer>
+​			<Answer>Oxford</Answer>
+​			<Answer>Derby</Answer>
+​		</Question> ​
+​		<Question>
+​			<Category>0</Category>			
+​			<MinStage>0</MinStage>			
+​			<MaxStage>16</MaxStage>			
+​			<Body>Who served as Prime Minister of Poland from 2007 to 2014?</Body>
+​			<Answer correct="">Donald Tusk</Answer>
+​			<Answer>Jarosław Kaczyński</Answer>
+​			<Answer>Ewa Kopacz</Answer>
+​			<Answer>Marek Belka</Answer>
+​		</Question>​
+​		<Question>
+​			<Category>0</Category>			
+​			<MinStage>0</MinStage>			
+​			<MaxStage>16</MaxStage>			
+​			<Body>Zsa Zsa Gabor was born in which European capital city?</Body>
+​			<Answer correct="">Budapest</Answer>
+​			<Answer>Monaco</Answer>
+​			<Answer>Baku</Answer>
+​			<Answer>Moscow</Answer>
+​		</Question> ​
+​		<Question>
+​			<Category>0</Category>			
+​			<MinStage>0</MinStage>			
+​			<MaxStage>16</MaxStage>			
+​			<Body>Which part of the body contains bones known as the ossicles?</Body>
+​			<Answer correct="">The ear</Answer>
+​			<Answer>The foot</Answer>
+​			<Answer>The upper thigh</Answer>
+​			<Answer>The shoulder</Answer>
+​		</Question> ​
+​		<Question>
+​			<Category>0</Category>			
+​			<MinStage>0</MinStage>			
+​			<MaxStage>16</MaxStage>			
+​			<Body>What weapon was used to assassinate Leon Trotsky?</Body>
+​			<Answer correct="">An ice pick</Answer>
+​			<Answer>A butchers knife</Answer>
+​			<Answer>A hacksaw</Answer>
+​			<Answer>A group of trained squirrels</Answer>
+​		</Question> ​
+​		<Question>
+​			<Category>0</Category>			
+​			<MinStage>0</MinStage>			
+​			<MaxStage>16</MaxStage>			
+​			<Body>Which association is most widely known for placing bibles in hotel rooms?</Body>
+​			<Answer correct="">The Gideons</Answer>
+​			<Answer>Westborough Baptist Church</Answer>
+​			<Answer>The Quakers</Answer>
+​			<Answer>United Church of Christ</Answer>
+​		</Question> ​
+​		<Question>
+​			<Category>0</Category>			
+​			<MinStage>0</MinStage>			
+​			<MaxStage>16</MaxStage>			
+​			<Body>In which country did James Bond novelist Ian Fleming have an estate called Goldeneye?</Body>
+​			<Answer correct="">Jamaica</Answer>
+​			<Answer>Malta</Answer>
+​			<Answer>Peru</Answer>
+​			<Answer>Fiji</Answer>
+​		</Question> ​
+​		<Question>
+​			<Category>0</Category>			
+​			<MinStage>0</MinStage>			
+​			<MaxStage>16</MaxStage>			
+​			<Body>Enver Halil Hoxha was head of state of which country from 1944 until his death in 1985?</Body>
+​			<Answer correct="">Albania</Answer>
+​			<Answer>Algeria</Answer>
+​			<Answer>Armenia</Answer>
+​			<Answer>Austria</Answer>
+​		</Question> ​
+​		<Question>
+​			<Category>0</Category>			
+​			<MinStage>0</MinStage>			
+​			<MaxStage>16</MaxStage>			
+​			<Body>Name the first singer to have been invited twice to perform the theme song at the Olympic Games?</Body>
+​			<Answer correct="">Sarah Brightman</Answer>
+​			<Answer>Insooni</Answer>
+​			<Answer>Rick Smith</Answer>
+​			<Answer>Liu Huan</Answer>
+​		</Question> ​
+​		<Question>
+​			<Category>0</Category>			
+​			<MinStage>0</MinStage>			
+​			<MaxStage>16</MaxStage>			
+​			<Body>What is the name of the essex based confectionary brand founded in 1907 by Sydney Herbert Marks.</Body>
+​			<Answer correct="">Trebor</Answer>
+​			<Answer>Cadbury</Answer>
+​			<Answer>Haribo</Answer>
+​			<Answer>Lockets</Answer>
+​		</Question> ​
+​		<Question>
+​			<Category>0</Category>			
+​			<MinStage>0</MinStage>			
+​			<MaxStage>16</MaxStage>			
+​			<Body>Who was elected Deputy Leader of the Labour Party in 2015?</Body>
+​			<Answer correct="">Tom Watson</Answer>
+​			<Answer>Ed Miliband</Answer>
+​			<Answer>Harriet Harman</Answer>
+​			<Answer>John Prescott</Answer>
+​		</Question> ​
+​		<Question>
+​			<Category>0</Category>			
+​			<MinStage>0</MinStage>			
+​			<MaxStage>16</MaxStage>			
+​			<Body>The Turner Contemporary art gallery is in which English seaside town?</Body>
+​			<Answer correct="">Margate, Kent</Answer>
+​			<Answer>Tynemouth, Tyne & Wear</Answer>
+​			<Answer>Southwold, Suffolk</Answer>
+​			<Answer>Aberystwyth, Ceredigion</Answer>
+​		</Question> ​
+​		<Question>
+​			<Category>0</Category>			
+​			<MinStage>0</MinStage>			
+​			<MaxStage>16</MaxStage>			
+​			<Body>Which member of the Beatles was the oldest?</Body>
+​			<Answer correct="">Ringo Starr</Answer>
+​			<Answer>John Lennon</Answer>
+​			<Answer>Paul McCartney</Answer>
+​			<Answer>George Harrison</Answer>
+​		</Question> 
+​		<Question>
+​			<Category>0</Category>			
+​			<MinStage>0</MinStage>			
+​			<MaxStage>16</MaxStage>			
+​			<Body>Which word, meaning 'small pebble' in Latin, is the mathematical study of continuous change?</Body>
+​			<Answer correct="">Calculus</Answer>
+​			<Answer>Saxum</Answer>
+​			<Answer>Calx</Answer>
+​			<Answer>Murex</Answer>
+​		</Question> ​
+​		<Question>
+​			<Category>0</Category>			
+​			<MinStage>0</MinStage>			
+​			<MaxStage>16</MaxStage>			
+​			<Body>Kirkwall is the capital town of which group of Scottish islands?</Body>
+​			<Answer correct="">Orkneys</Answer>
+​			<Answer>Shetland</Answer>
+​			<Answer>Skye</Answer>
+​			<Answer>Bute</Answer>
+​		</Question> ​
+​		<Question>
+​			<Category>0</Category>			
+​			<MinStage>0</MinStage>			
+​			<MaxStage>16</MaxStage>			
+​			<Body>What is the name of the digital library founded in 1971 by Michael S. Hart as a volunteer effort to digitize and archive cultural works.</Body>
+​			<Answer correct="">Project Gutenberg</Answer>
+​			<Answer>Archive.org/</Answer>
+​			<Answer>Textfiles</Answer>
+​			<Answer>Alexandrea</Answer>
+​		</Question> ​
+​		<Question>
+​			<Category>0</Category>			
+​			<MinStage>0</MinStage>			
+​			<MaxStage>16</MaxStage>			
+​			<Body>What is the most abundant gas in the Earth's atmosphere?</Body>
+​			<Answer correct="">Nitrogen</Answer>
+​			<Answer>Oxygen</Answer>
+​			<Answer>Argon</Answer>
+​			<Answer>Carbon Dioxide</Answer>
+​		</Question> ​
+​		<Question>
+​			<Category>0</Category>			
+​			<MinStage>0</MinStage>			
+​			<MaxStage>16</MaxStage>			
+​			<Body>Name the county in South Korea that hosted the 2018 Winter Olympics?</Body>
+​			<Answer correct="">Pyeongchang</Answer>
+​			<Answer>Gijang</Answer>
+​			<Answer>Dalseong</Answer>
+​			<Answer>Yangpyeong</Answer>
+​		</Question> ​
+​		<Question>
+​			<Category>0</Category>			
+​			<MinStage>0</MinStage>			
+​			<MaxStage>16</MaxStage>			
+​			<Body>Goodbye, Farewell and Amen was the title of the television film which was the final (and 256th) episode of which American television series?</Body>
+​			<Answer correct="">MASH</Answer>
+​			<Answer>Grey's Anatomy</Answer>
+​			<Answer>Guiding Light</Answer>
+​			<Answer>Lockup</Answer>
+​		</Question> 
+	</Questions>
+</QuestionSet>

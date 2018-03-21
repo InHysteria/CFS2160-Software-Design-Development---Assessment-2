@@ -17,11 +17,19 @@
 <Remote>pubquiz.questionset</Remote>
 </QuestionSetRemote>
 <QuestionSetRemote>
-<Name>Question Set Template</Name>
-<Version>0.0.0</Version>
-<Author>Example Author</Author>
-<Description>An almost empty question set used to aid in creating new question sets.</Description>
-<Questions>1</Questions>
-<Remote>template.questionset</Remote>
+<Name>Pythonic Trivia</Name>
+<Version>1.0.0</Version>
+<Author>http://www.triviaplaza.com/</Author>
+<Description>A set of monty python trivia questions provided by http://www.triviaplaza.com/</Description>
+<Questions>20</Questions>
+<Remote>pythonictrivial.questionset</Remote>
+</QuestionSetRemote>
+<QuestionSetRemote>
+<Name>Science Quiz</Name>
+<Version>1.0.0</Version>
+<Author>http://www.triviaplaza.com/</Author>
+<Description>A set of scientific knowledge questions provided by http://www.triviaplaza.com/</Description>
+<Questions>16</Questions>
+<Remote>sciencequiz.questionset</Remote>
 </QuestionSetRemote>
 </QuestionSetManifest>

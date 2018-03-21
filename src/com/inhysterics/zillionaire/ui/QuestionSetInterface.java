@@ -52,7 +52,7 @@ public class QuestionSetInterface extends JPanel
 		this.setLayout(new GridBagLayout());
 	
 
-		localLabel = new JLabel("Avaliable locally", JLabel.LEFT);	
+		localLabel = new JLabel("Avaliable locally (Hold ctrl to select multiple)", JLabel.LEFT);	
 		
 		localQuestionSetListModel = new DefaultListModel<QuestionSet>();
 		localQuestionSetList = new JList<QuestionSet>(localQuestionSetListModel);

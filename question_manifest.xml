@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <QuestionSetManifest>
 <QuestionSetRemote>
+<Name>Computer Trivia</Name>
+<Version>1.0.0</Version>
+<Author>http://www.triviaplaza.com/</Author>
+<Description>A set of computer trivia questions provided by http://www.triviaplaza.com/</Description>
+<Questions>10</Questions>
+<Remote>computingtrivia.questionset</Remote>
+</QuestionSetRemote>
+<QuestionSetRemote>
 <Name>Debug Questions</Name>
 <Version>0.0.3</Version>
 <Author>InHysteria</Author>

@@ -1,0 +1,112 @@
+<QuestionSet>
+	<Name>Computer Trivia</Name>
+	<Version>1.0.0</Version>
+	<Author>http://www.triviaplaza.com/</Author>
+	<Description>A set of computer trivia questions provided by http://www.triviaplaza.com/</Description>
+	<Categories>
+		<CategoryDefinition id="0">Computer Trivia</CategoryDefinition>
+	</Categories>
+	<Questions>
+		<Question>
+			<Category>0</Category>		
+			<Body>In what year was DOS created?</Body>
+			<MinStage>0</MinStage>
+			<MaxStage>16</MaxStage>
+			<Answer correct="">1981</Answer>
+			<Answer>1973</Answer>
+			<Answer>1977</Answer>
+			<Answer>1985</Answer>
+		</Question>  
+		<Question>
+			<Category>0</Category>		
+			<Body>Where is the headquarters of Microsoft located?</Body>
+			<MinStage>0</MinStage>
+			<MaxStage>16</MaxStage>
+			<Answer correct="">Redmond, Washington</Answer>
+			<Answer>Richmond, Virginia</Answer>
+			<Answer>Santa Clara, California</Answer>
+			<Answer>Tucson, Arizona</Answer>
+		</Question>  
+		<Question>
+			<Category>0</Category>		
+			<Body>What was the first full length computer generated feature film?</Body>
+			<MinStage>0</MinStage>
+			<MaxStage>16</MaxStage>
+			<Answer correct="">Toy Story</Answer>
+			<Answer>Lilo &amp; Stitch</Answer>
+			<Answer>Ice Age</Answer>
+			<Answer>Final Destiny</Answer>
+		</Question>  
+		<Question>
+			<Category>0</Category>		
+			<Body>In what year was the "@" chosen for its use in e-mail addresses?</Body>
+			<MinStage>0</MinStage>
+			<MaxStage>16</MaxStage>
+			<Answer correct="">1972</Answer>
+			<Answer>1976</Answer>
+			<Answer>1980</Answer>
+			<Answer>1984</Answer>
+		</Question>  
+		<Question>
+			<Category>0</Category>		
+			<Body>Which company first manufactured CDs?</Body>
+			<MinStage>0</MinStage>
+			<MaxStage>16</MaxStage>
+			<Answer correct="">Philips</Answer>
+			<Answer>Time-Warner</Answer>
+			<Answer>IBM</Answer>
+			<Answer>Yamaha</Answer>
+		</Question>  
+		<Question>
+			<Category>0</Category>		
+			<Body>In what year did ARPANET became operational?</Body>
+			<MinStage>0</MinStage>
+			<MaxStage>16</MaxStage>
+			<Answer correct="">1969</Answer>
+			<Answer>1979</Answer>
+			<Answer>1964</Answer>
+			<Answer>1974</Answer>
+		</Question>  
+		<Question>
+			<Category>0</Category>		
+			<Body>Which company first produced the 3 1/2 inch floppy disk?</Body>
+			<MinStage>0</MinStage>
+			<MaxStage>16</MaxStage>
+			<Answer correct="">Sony in 1981</Answer>
+			<Answer>IBM in 1971</Answer>
+			<Answer>Microsoft in 1983</Answer>
+			<Answer>Philips in 1980</Answer>
+		</Question>  
+		<Question>
+			<Category>0</Category>		
+			<Body>What is the Yellow Book</Body>
+			<MinStage>0</MinStage>
+			<MaxStage>16</MaxStage>
+			<Answer correct="">Specifications for Computer Data CD?</Answer>
+			<Answer>Specifications for VCD and Photo CD</Answer>
+			<Answer>Specifications for CD-R, CD-RW Discs</Answer>
+			<Answer>Specifications for Digital Audio CD</Answer>
+		</Question>  
+		<Question>
+			<Category>0</Category>		
+			<Body>What is CIH also known as?</Body>
+			<MinStage>0</MinStage>
+			<MaxStage>16</MaxStage>
+			<Answer correct="">Chernobyl Virus</Answer>
+			<Answer>Compaq Interactive Help</Answer>
+			<Answer>Common Interface Header</Answer>
+			<Answer>C++, a programming language</Answer>
+		</Question>  
+		<Question>
+			<Category>0</Category>		
+			<Body>What is Error 403</Body>
+			<MinStage>0</MinStage>
+			<MaxStage>16</MaxStage>
+			<Answer correct="">Site Access Forbidden/Password Protected?</Answer>
+			<Answer>Bad File Request/Syntax error</Answer>
+			<Answer>Site not found -in HTTP</Answer>
+			<Answer>Request Timeout</Answer>
+		</Question>   
+	</Questions>
+</QuestionSet>
+
